@@ -2,4 +2,11 @@
     <string name="app_name">HACK2017</string>
 
     <string name="facebook_app_id">1918204331762895</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">UHomZd5Mn750ZT3lCe9kgPsPM</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">d7cxjkEQ3oO3RkrzY2OAvJSl9LZ7bEwU42zmXw1gJndMpFRWnG</string>
 </resources>
