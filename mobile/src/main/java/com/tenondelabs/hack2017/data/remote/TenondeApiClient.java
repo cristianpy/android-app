@@ -36,14 +36,14 @@ public class TenondeApiClient {
     }
 
     private Retrofit getInstanceRetrofit(String url) {
-        Retrofit retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
             .baseUrl(url)
             .client(TenondeLabsApplication.getInstance().getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create(getInstanceGson()))
             //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build();
 
-        return retrofit;
+//        return retrofit;
     }
 
     private Gson getInstanceGson() {
