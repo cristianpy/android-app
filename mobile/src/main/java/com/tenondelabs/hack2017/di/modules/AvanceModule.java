@@ -27,39 +27,39 @@ import io.realm.Realm;
 @Module
 public class AvanceModule {
 
-    private GobernacionView gobernacionView;
+    private AvanceView avanceView;
 
-    public AvanceModule(GobernacionView gobernacionView) {
-        this.gobernacionView = gobernacionView;
+    public AvanceModule(AvanceView avanceView) {
+        this.avanceView = avanceView;
     }
 
     @Provides
     @Singleton
-    GobernacionView provideGobernacionView() {
-        return this.gobernacionView;
+    AvanceView provideAvanceView() {
+        return this.avanceView;
     }
 
     @Provides
     @Singleton
-    GobernacionPresenter provideGobernacionPresenter(GobernacionView ciudadView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        return new GobernacionPresenterImpl(ciudadView, gobernacionInteractor, eventBus);
+    AvancePresenter provideAvancePresenter(AvanceView ciudadView, AvanceInteractor avanceInteractor, EventBus eventBus) {
+        return new AvancePresenterImpl(ciudadView, avanceInteractor, eventBus);
     }
 
     @Provides
-    GobernacionAdapter provideAdapter(Context context) {
-        return new GobernacionAdapter(context);
-    }
-
-    @Provides
-    @Singleton
-    GobernacionInteractor provideGobernacionInteractor(GobernacionRepository ciudadRepository) {
-        return new GobernacionInteractorImpl(ciudadRepository);
+    AvanceAdapter provideAdapter(Context context) {
+        return new AvanceAdapter(context);
     }
 
     @Provides
     @Singleton
-    GobernacionRepository provideGobernacionRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
-        return new GobernacionRepositoryImpl(client, eventBus, realm);
+    AvanceInteractor provideGobernacionInteractor(AvanceRepository ciudadRepository) {
+        return new AvanceInteractorImpl(ciudadRepository);
+    }
+
+    @Provides
+    @Singleton
+    AvanceRepository provideAvanceRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
+        return new AvanceRepositoryImpl(client, eventBus, realm);
     }
 
 }

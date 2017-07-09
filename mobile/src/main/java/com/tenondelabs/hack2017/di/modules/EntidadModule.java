@@ -27,39 +27,39 @@ import io.realm.Realm;
 @Module
 public class EntidadModule {
 
-    private GobernacionView gobernacionView;
+    private EntidadView entidadView;
 
-    public EntidadModule(GobernacionView gobernacionView) {
-        this.gobernacionView = gobernacionView;
+    public EntidadModule(EntidadView entidadView) {
+        this.entidadView = entidadView;
     }
 
     @Provides
     @Singleton
-    GobernacionView provideGobernacionView() {
-        return this.gobernacionView;
+    EntidadView provideEntidadView() {
+        return this.entidadView;
     }
 
     @Provides
     @Singleton
-    GobernacionPresenter provideGobernacionPresenter(GobernacionView ciudadView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        return new GobernacionPresenterImpl(ciudadView, gobernacionInteractor, eventBus);
+    EntidadPresenter provideEntidadPresenter(EntidadView ciudadView, EntidadInteractor entidadInteractor, EventBus eventBus) {
+        return new EntidadPresenterImpl(ciudadView, entidadInteractor, eventBus);
     }
 
     @Provides
-    GobernacionAdapter provideAdapter(Context context) {
-        return new GobernacionAdapter(context);
-    }
-
-    @Provides
-    @Singleton
-    GobernacionInteractor provideGobernacionInteractor(GobernacionRepository ciudadRepository) {
-        return new GobernacionInteractorImpl(ciudadRepository);
+    EntidadAdapter provideAdapter(Context context) {
+        return new EntidadAdapter(context);
     }
 
     @Provides
     @Singleton
-    GobernacionRepository provideGobernacionRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
-        return new GobernacionRepositoryImpl(client, eventBus, realm);
+    EntidadInteractor provideEntidadInteractor(EntidadRepository ciudadRepository) {
+        return new EntidadInteractorImpl(ciudadRepository);
+    }
+
+    @Provides
+    @Singleton
+    EntidadRepository provideEntidadRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
+        return new EntidadRepositoryImpl(client, eventBus, realm);
     }
 
 }
