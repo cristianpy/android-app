@@ -1,0 +1,29 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/container_button_social">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.facebook.share.widget.DeviceShareButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:id="@+id/share_facebook"/>
+
+        <com.twitter.sdk.android.tweetcomposer.ComposerView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:id="@+id/share_twitter"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
