@@ -30,8 +30,6 @@ public class EntidadAdapter extends BaseAdapter {
 	private Context mContext;
 	private LayoutInflater mInflater;
 	private ArrayList<Entidad> mEntidades;
-//	private String action;
-//	private Realm realm;
 
 	public EntidadAdapter(Context context) {
 		this.mContext = context;
@@ -60,15 +58,11 @@ public class EntidadAdapter extends BaseAdapter {
 		return mEntidades.get(position);
 	}
 
-//	public void setAction(String accion) {
-//		this.action = accion;
-//	}
 
 	//Patron ViewHolder
 	public class ViewHolderEntidad {
 		@Bind(R.id.img_entidad) ImageView mImgEntidad;
 		@Bind(R.id.txt_nombre_entidad) TextView mTxtNombreEntidad;
-		@Bind(R.id.img_today) ImageView mImgToday;
 
 		public ViewHolderEntidad(View view){
 			ButterKnife.bind(this, view);
@@ -91,6 +85,7 @@ public class EntidadAdapter extends BaseAdapter {
 		if (mEntidades.get(position) == null) {
 			return -1;
 		}
+		
 		return mEntidades.get(position).getId();
 	}
 

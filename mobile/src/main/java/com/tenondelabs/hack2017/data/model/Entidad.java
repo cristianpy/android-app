@@ -12,7 +12,7 @@ public class Entidad extends RealmObject {
     private Long id;
     @SerializedName("ins_id")
     private String insId;
-    @SerializedName("SNNA")
+    @SerializedName("sigla")
     private String nombre;
     private String imagen;
 

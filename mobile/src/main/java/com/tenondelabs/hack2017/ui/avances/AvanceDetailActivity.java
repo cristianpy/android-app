@@ -52,7 +52,7 @@ public class AvanceDetailActivity extends BaseActivity
 
         ButterKnife.bind(this);
         setToolbar();
-        setGoogleMaps();
+//        setGoogleMaps();
     }
 
     boolean isTextViewClicked = false;

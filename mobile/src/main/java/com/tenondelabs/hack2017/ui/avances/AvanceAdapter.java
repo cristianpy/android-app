@@ -18,7 +18,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-
 /**
  * @author TenondeLabs
  * @version 1.0
@@ -30,8 +29,6 @@ public class AvanceAdapter extends BaseAdapter {
 	private Context mContext;
 	private LayoutInflater mInflater;
 	private ArrayList<Avance> mAvances;
-//	private String action;
-//	private Realm realm;
 
 	public AvanceAdapter(Context context) {
 		this.mContext = context;
@@ -60,15 +57,10 @@ public class AvanceAdapter extends BaseAdapter {
 		return mAvances.get(position);
 	}
 
-//	public void setAction(String accion) {
-//		this.action = accion;
-//	}
-
 	//Patron ViewHolder
 	public class ViewHolderCiudad {
 		@Bind(R.id.img_avance) ImageView mImgAvance;
 		@Bind(R.id.txt_justificacion) TextView mTxtJustificacion;
-		@Bind(R.id.img_today) ImageView mImgToday;
 
 		public ViewHolderCiudad(View view){
 			ButterKnife.bind(this, view);
@@ -107,50 +99,16 @@ public class AvanceAdapter extends BaseAdapter {
 		}
 
 //		Picasso.with(mContext)
-//				.load(mAvances.get(position).getImagen())
-//				.fit()
-//				.placeholder(R.drawable.ic_carrete_eventos_table)
-//				.error(R.drawable.ic_pin_drop_white_24dp)
-//				.into(viewHolder.mImgAvance);
+//			.load(mAvances.get(position).getImagen())
+//			.fit()
+//			.placeholder(R.drawable.ic_carrete_eventos_table)
+//			.error(R.drawable.ic_pin_drop_white_24dp)
+//			.into(viewHolder.mImgAvance);
 
 		viewHolder.mTxtJustificacion.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
 		viewHolder.mTxtJustificacion.setText(mAvances.get(position).getJustificacion());
 
-//		if (action!=null){
-//			checkFavorites(mAvances.get(position).getId(),viewHolder);
-//		}
-
 		return view;
 	}
-
-//	private void setupRealm() {
-//		realm = Realm.getDefaultInstance();
-//	}
-
-//	private void checkFavorites(long ciudadId, ViewHolderCiudad viewHolder) {
-//		Calendar auxCalendar = Calendar.getInstance();
-//		auxCalendar.set(Calendar.HOUR_OF_DAY,0);
-//		auxCalendar.set(Calendar.MINUTE,0);
-//		auxCalendar.set(Calendar.SECOND,0);
-//		auxCalendar.set(Calendar.MILLISECOND,0);
-//		setupRealm();
-//		Long count = 0l;
-//		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0){
-//			count = realm.where(Evento.class)
-//					.equalTo("fecha",auxCalendar.getTime())
-//					.equalTo("favorito", true)
-//					.equalTo("ciudadId", ciudadId)
-//					.count();
-//		}else if(action.compareTo(Util.PROMO_BY_CIUDAD) == 0){
-//			count = realm.where(Promocion.class)
-//					.lessThanOrEqualTo("fechaInicio",auxCalendar.getTime())
-//					.greaterThanOrEqualTo("fechaFin",auxCalendar.getTime())
-//					.equalTo("favorito", true)
-//					.equalTo("ciudadId", ciudadId)
-//					.count();
-//		}
-//		realm.close();
-//		viewHolder.mImgToday.setVisibility(count>0?View.VISIBLE:View.GONE);
-//	}
 
 }

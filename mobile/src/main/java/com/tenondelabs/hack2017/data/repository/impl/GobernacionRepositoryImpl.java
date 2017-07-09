@@ -1,7 +1,6 @@
 package com.tenondelabs.hack2017.data.repository.impl;
 
-import android.util.Log;
-
+import com.tenondelabs.hack2017.data.model.DataSetGobernacion;
 import com.tenondelabs.hack2017.data.model.Gobernacion;
 import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
@@ -34,10 +33,10 @@ public class GobernacionRepositoryImpl implements GobernacionRepository {
 
     @Override
     public void getGobernaciones() {
-        Callback<List<Gobernacion>> listener = new Callback<List<Gobernacion>>() {
+        Callback<DataSetGobernacion> listener = new Callback<DataSetGobernacion>() {
             @Override
-            public void success(List<Gobernacion> ciudadList) {
-                postEvent(ciudadList);
+            public void success(DataSetGobernacion dataSet) {
+                postEvent(dataSet.getGobernaciones());
             }
 
             @Override
@@ -53,15 +52,13 @@ public class GobernacionRepositoryImpl implements GobernacionRepository {
             }
         };
 
-        client.getService().getGobernaciones().enqueue(listener);
+        client.getServiceDepartamento().getGobernaciones().enqueue(listener);
     }
 
     @Override
     public void getGobernacionesFromStorage() {
-//        realm.executeTransactionAsync()
         RealmResults<Gobernacion> gobernaciones = realm.where(Gobernacion.class)
                 .findAll();
-        Log.d("CiudadRepository", "CIU CANT: " + gobernaciones.size());
         if (gobernaciones.isLoaded()) {
             postEvent(gobernaciones);
         }
@@ -72,10 +69,7 @@ public class GobernacionRepositoryImpl implements GobernacionRepository {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-//                for (Gobernacion gobernacion : gobernacionList) {
-//                    gobernacion = realm.createObject(Gobernacion.class);
-                    realm.insert(gobernacionList);
-//                }
+                realm.insert(gobernacionList);
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override

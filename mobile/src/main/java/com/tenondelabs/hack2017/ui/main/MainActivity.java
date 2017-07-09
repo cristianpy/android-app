@@ -26,10 +26,6 @@ import java.security.NoSuchAlgorithmException;
 import butterknife.Bind;
 
 public class MainActivity extends AppCompatActivity {
-//        implements
-//        AvanceListFragment.OnFragmentInteractionListener,
-//        GobernacionListFragment.OnFragmentInteractionListener,
-//        EntidadListFragment.OnFragmentInteractionListener {
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
 
