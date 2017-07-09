@@ -82,7 +82,7 @@ public class GobernacionAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Gobernacion getItem(int position) {
 		return mGobernaciones.get(position);
 	}
 

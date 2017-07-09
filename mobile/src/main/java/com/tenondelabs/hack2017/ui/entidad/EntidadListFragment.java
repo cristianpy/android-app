@@ -18,7 +18,10 @@ import com.tenondelabs.hack2017.di.components.DaggerEntidadComponent;
 import com.tenondelabs.hack2017.di.modules.EntidadModule;
 import com.tenondelabs.hack2017.di.modules.LibsModule;
 import com.tenondelabs.hack2017.di.modules.MainModule;
+import com.tenondelabs.hack2017.ui.avances.AvanceActivity;
+import com.tenondelabs.hack2017.ui.base.BaseActivity;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
+import com.tenondelabs.hack2017.ui.util.Util;
 
 import java.util.List;
 
@@ -43,14 +46,10 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	@Bind(R.id.swipe_layout_entidad) SwipeRefreshLayout mSwipeRefreshLayout;
 	@Bind(R.id.progress_indicator_entidad) ProgressBar mProgressBar;
 
-	@Inject
-	EntidadAdapter adapter;
-	@Inject
-	EntidadPresenter entidadPresenter;
-//	@Inject Realm realm;
+	@Inject EntidadAdapter adapter;
+	@Inject EntidadPresenter entidadPresenter;
 
 	private static EntidadListFragment entidadListFragment;
-	private String action;
 
 	public EntidadListFragment() { }
 
@@ -58,13 +57,6 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 		if (entidadListFragment == null) {
 			entidadListFragment = new EntidadListFragment();
 		}
-
-		return entidadListFragment;
-	}
-
-	public static EntidadListFragment newInstance(String action) {
-		EntidadListFragment entidadListFragment = new EntidadListFragment();
-		entidadListFragment.setAction(action);
 
 		return entidadListFragment;
 	}
@@ -82,7 +74,6 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 
 		setupInjection();
 		setupGridView();
-		//loadCiudades(); **Moved to onResume to refresh on back to activity**
 
 		return view;
 	}
@@ -92,7 +83,6 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 		super.onResume();
 		entidadPresenter.onResume();
 		entidadPresenter.getEntidades();
-//		loadEntidades();
 	}
 
 	@Override
@@ -105,14 +95,12 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	public void onDestroy() {
 		super.onDestroy();
 		entidadPresenter.onDestroy();
-//		realm.close();
 	}
 
 	@Override
 	public void onRefresh() {
 		adapter.clearEntidades();
 		entidadPresenter.getEntidades();
-//        loadEntidades();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);
@@ -122,11 +110,7 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 		if ( hasAdapter() ) {
-			if (getAction() != null) {
-				openActionActivity(position, getAction());
-			} else {
-				openCategoriaActivity(position);
-			}
+			openAvanceActivity(position);
 		}
 	}
 
@@ -162,58 +146,19 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	}
 
 	private void setupGridView() {
-//		if (getAction() != null) {
-//			adapter.setAction(getAction());
-//		}
 		mGridViewEntidad.setAdapter(adapter);
 	}
-
-//	private void loadEntidades() {
-//		RealmResults<Entidad> results = realm.where(Entidad.class).findAll();
-//
-//		hideProgress();
-//
-//		if (!results.isEmpty()) {
-//			adapter.clearEntidades();
-//			adapter.addEntidades(results);
-//		} else {
-//			Snackbar.make(container, "No es posible cargar Cuidades", Snackbar.LENGTH_LONG).show();
-//		}
-//	}
 
 	private boolean hasAdapter() {
 		return (adapter != null);
 	}
 
-	private void openCategoriaActivity(int position) {
-		long entidadId = adapter.getItemId(position);
+	private void openAvanceActivity(int position) {
+		String entidadId = adapter.getItem(position).getInsId();
 
-//		Intent intent = new Intent(getActivity(), CategoriaActivity.class);
-//		intent.putExtra(Util.CODIGO_CIUDAD, entidadId);
-//		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+		Intent intent = new Intent(getActivity(), AvanceActivity.class);
+		intent.putExtra(Util.CODIGO_ENTIDAD, entidadId);
+		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
-	private void openActionActivity(int position, String action) {
-		long entidadId = adapter.getItemId(position);
-		Intent intent;
-
-//		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0) {
-//			intent = new Intent(getActivity(), EventoActivity.class);
-//		} else if (action.compareTo(Util.PROMO_BY_CIUDAD) == 0) {
-//			intent = new Intent(getActivity(), PromocionActivity.class);
-//		} else {
-//			intent = new Intent(getActivity(), CategoriaActivity.class);
-//		}
-//
-//		intent.putExtra(Util.CODIGO_CIUDAD, entidadId);
-//		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
-	}
 }
