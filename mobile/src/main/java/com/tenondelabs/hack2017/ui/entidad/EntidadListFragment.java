@@ -54,7 +54,7 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 
 	public EntidadListFragment() { }
 
-	public static EntidadListFragment getInstance() {
+	public static EntidadListFragment newInstance() {
 		if (entidadListFragment == null) {
 			entidadListFragment = new EntidadListFragment();
 		}

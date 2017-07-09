@@ -19,8 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TenondeApiClient {
 
     private static final String TABLERO_AVANCE_URL = "http://192.168.0.101:3000/";
-    private static final String DEPARTAMENTO_URL = "http://192.168.0.101:3000/";
-    private static final String DISTRITO_URL = "http://192.168.0.101:3000/";
+    private static final String DEPARTAMENTO_URL = "http://geo.stp.gov.py:80/user/dgeec/api/v2/sql";
+    private static final String DISTRITO_URL = "http://geo.stp.gov.py:80/user/dgeec/api/v2/sql";
 
     public TenondeService getService() {
         return getInstanceRetrofit(TABLERO_AVANCE_URL).create(TenondeService.class);

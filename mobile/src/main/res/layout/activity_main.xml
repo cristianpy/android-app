@@ -16,6 +16,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/frameLayout"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"

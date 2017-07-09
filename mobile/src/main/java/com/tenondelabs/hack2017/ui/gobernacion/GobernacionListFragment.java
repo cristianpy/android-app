@@ -53,7 +53,7 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 
 	public GobernacionListFragment() { }
 
-	public static GobernacionListFragment getInstance() {
+	public static GobernacionListFragment newInstance() {
 		if (gobernacionListFragment == null) {
 			gobernacionListFragment = new GobernacionListFragment();
 		}

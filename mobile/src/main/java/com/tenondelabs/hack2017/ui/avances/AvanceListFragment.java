@@ -1,5 +1,6 @@
 package com.tenondelabs.hack2017.ui.avances;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -48,9 +49,11 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 
 	private static AvanceListFragment gobernacionListFragment;
 
+	private OnFragmentInteractionListener listener;
+
 	public AvanceListFragment() { }
 
-	public static AvanceListFragment getInstance() {
+	public static AvanceListFragment newInstance() {
 		if (gobernacionListFragment == null) {
 			gobernacionListFragment = new AvanceListFragment();
 		}
@@ -112,6 +115,21 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);
 		}
+	}
+
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		if (context instanceof OnFragmentInteractionListener) {
+			listener = (OnFragmentInteractionListener) context;
+		} else {
+			throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+		}
+	}
+
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		listener = null;
 	}
 
 	@Override
@@ -199,5 +217,7 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 //		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
+
+	public interface OnFragmentInteractionListener { }
 
 }

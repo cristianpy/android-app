@@ -1,12 +1,13 @@
 package com.tenondelabs.hack2017.ui.main;
 
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
@@ -25,6 +26,10 @@ import java.security.NoSuchAlgorithmException;
 import butterknife.Bind;
 
 public class MainActivity extends AppCompatActivity {
+//        implements
+//        AvanceListFragment.OnFragmentInteractionListener,
+//        GobernacionListFragment.OnFragmentInteractionListener,
+//        EntidadListFragment.OnFragmentInteractionListener {
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
 
@@ -33,21 +38,27 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            Fragment fragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-//                    mTextMessage.setText(R.string.title_home);
-                    setupAvanceFragment();
-                    return true;
+                    fragment = AvanceListFragment.newInstance();
+                    break;
                 case R.id.navigation_dashboard:
-//                    mTextMessage.setText(R.string.title_dashboard);
-                    setupGobernacionFragment();
-                    return true;
+                    fragment = GobernacionListFragment.newInstance();
+                    break;
                 case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
-                    setupEntidadFragment();
-                    return true;
+                    fragment = EntidadListFragment.newInstance();
+                    break;
             }
-            return false;
+
+            if (fragment != null) {
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout, fragment);
+                fragmentTransaction.commit();
+            }
+
+            return true;
         }
     };
 
@@ -107,17 +118,5 @@ public class MainActivity extends AppCompatActivity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
-
-    private void setupAvanceFragment() {
-        AvanceListFragment.getInstance();
-    }
-
-    private void setupGobernacionFragment() {
-        GobernacionListFragment.getInstance();
-    }
-
-    private void setupEntidadFragment() {
-        EntidadListFragment.getInstance();
-    }
 
 }
