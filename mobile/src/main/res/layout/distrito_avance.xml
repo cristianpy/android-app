@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/container_gobernacion"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout_gobernacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <GridView
+            android:id="@+id/gridview_gobernacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:gravity="top"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:paddingTop="10dp" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_indicator_gobernacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center|center_vertical" />
+
+</FrameLayout >
