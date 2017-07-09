@@ -10,9 +10,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 @Singleton @Component(modules = {MainModule.class, LibsModule.class, EntidadModule.class})
 public interface EntidadComponent {

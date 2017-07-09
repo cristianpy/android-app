@@ -11,10 +11,10 @@ import com.tenondelabs.hack2017.R;
 import java.lang.reflect.Method;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 0.0.1
  * Class Base to Fragment
- * Copyright 2016 Akibusca. All rights reserved
+ * Copyright 2017 TenondeLabs. All rights reserved
  */
 public class BaseFragment extends Fragment {
 

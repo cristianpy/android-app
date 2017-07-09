@@ -7,9 +7,9 @@ import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
 import java.util.List;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class GobernacionInteractorImpl implements GobernacionInteractor {
 

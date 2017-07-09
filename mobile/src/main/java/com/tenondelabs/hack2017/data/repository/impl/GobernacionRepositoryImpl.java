@@ -16,9 +16,9 @@ import io.realm.RealmResults;
 import retrofit2.Call;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class GobernacionRepositoryImpl implements GobernacionRepository {
 

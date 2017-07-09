@@ -20,10 +20,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
  * Clase que representa el Adaptador de un ListView
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class GobernacionAdapter extends BaseAdapter {
 

@@ -14,23 +14,23 @@ import retrofit2.http.GET;
  * @author Tenonde Labs
  * @version 1.0
  * Interfaz que representa la llamadas a los recursos del API
- * Copyright 2017 Tenonde. All rights reserved
+ * Copyright 2017 Tenonde Labs. All rights reserved
  */
 public interface TenondeService {
 
-    //Resource ciudades
+    //Resource avances
     @GET("avances")
     Call<List<Avance>> getAvances();
 
-    //Resource empresa ciudades
+    //Resource departamentos
     @GET("gobernaciones")
     Call<List<Gobernacion>> getGobernaciones();
 
-    //Resource empresa ciudades
+    //Resource entidades
     @GET("entidades")
     Call<List<Entidad>> getEntidades();
 
-    //Resource empresa ciudades
+    //Resource actividades
     @GET("actividades")
     Call<List<Actividad>> getActividades();
 

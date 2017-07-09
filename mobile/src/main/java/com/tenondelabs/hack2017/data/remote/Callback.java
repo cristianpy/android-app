@@ -8,10 +8,10 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
  * Clase wrapper que envuelve el Callback de retrofit2
- * Copyright 2016 akibusca Inc. All rights reserved
+ * Copyright 2017 TeondeLabs Inc. All rights reserved
  */
 public abstract class Callback<T> implements retrofit2.Callback<T> {
 

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.graphics.Typeface;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
  * Clase Util para Roboto Font
- * Copyright 2015 Wigo Creative. All rights reserved
+ * Copyright 2017 TenondeLabs. All rights reserved
  */
 public class RobotoFontUtil {
 

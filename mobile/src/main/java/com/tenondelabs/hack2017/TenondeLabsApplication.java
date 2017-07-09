@@ -11,7 +11,7 @@ import io.realm.RealmConfiguration;
 import okhttp3.OkHttpClient;
 
 /**
- * Created by rorogarcete on 08/07/17.
+ * Created by TenondeLabs on 08/07/17.
  */
 
 public class TenondeLabsApplication extends Application {
