@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HACK2017.iml" filepath="$PROJECT_DIR$/HACK2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hack2017-android-app.iml" filepath="$PROJECT_DIR$/hack2017-android-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
     </modules>
