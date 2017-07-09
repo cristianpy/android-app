@@ -1,4 +1,4 @@
-package com.tenondelabs.hack2017;
+package com.tenondelabs.hack2017.ui.main;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.lastserv.hack2017.R;
+import com.tenondelabs.hack2017.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
