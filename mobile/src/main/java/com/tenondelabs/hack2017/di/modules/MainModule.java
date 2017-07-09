@@ -2,6 +2,7 @@ package com.tenondelabs.hack2017.di.modules;
 
 import android.content.Context;
 
+import com.tenondelabs.hack2017.TenondeLabsApplication;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
 
 import javax.inject.Singleton;
@@ -9,6 +10,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * @author TenondeLabs
@@ -18,16 +20,16 @@ import io.realm.Realm;
 @Module
 public class MainModule {
 
-//    private final AkibuscaApplication akibuscaApplication;
+//    private TenondeLabsApplication application;
 //
-//    public MainModule(AkibuscaApplication akibuscaApplication) {
-//        this.akibuscaApplication = akibuscaApplication;
+//    public MainModule(TenondeLabsApplication application) {
+//        this.application = application;
 //    }
 //
 //    @Provides
 //    @Singleton
 //    public Context provideApplicationContext() {
-//        return akibuscaApplication;
+//        return application;
 //    }
 
     private Context context;
@@ -51,6 +53,11 @@ public class MainModule {
     @Provides
     @Singleton
     Realm provideRealm() {
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(context)
+                .name("myrealm.realm")
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
         return Realm.getDefaultInstance();
     }
 

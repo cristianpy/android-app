@@ -8,10 +8,13 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Google Maps -->
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        android:name=".TenondeLabsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -32,6 +35,23 @@
         <activity android:name=".ui.avances.AvanceActivity"/>
         <activity android:name=".ui.avances.AvanceDetailActivity"/>
         <activity android:name=".ui.images.FullScreenImageActivity"/>
+
+        <!--Facekook-->
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider1918204331762895"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
+
+        <!--Google-->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDedEZ4ZjrTjiwInqReBrrMZbEePbGHPao"/>
+
 
     </application>
 

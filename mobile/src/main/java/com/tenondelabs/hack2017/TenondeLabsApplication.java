@@ -27,7 +27,7 @@ public class TenondeLabsApplication extends Application {
 
         mInstance = this;
         mOkHttpClient = OkClientFactory.provideOkHttpClient(this);
-        initRealmConfiguration();
+//        initRealmConfiguration();
     }
 
     public static TenondeLabsApplication getInstance() {

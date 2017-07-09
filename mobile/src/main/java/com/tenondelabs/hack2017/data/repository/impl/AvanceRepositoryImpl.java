@@ -1,6 +1,8 @@
 package com.tenondelabs.hack2017.data.repository.impl;
 
 import com.tenondelabs.hack2017.data.model.Avance;
+import com.tenondelabs.hack2017.data.model.DataSet;
+import com.tenondelabs.hack2017.data.model.DataSetAvance;
 import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
 import com.tenondelabs.hack2017.data.repository.AvanceRepository;
@@ -32,10 +34,10 @@ public class AvanceRepositoryImpl implements AvanceRepository {
 
     @Override
     public void getAvances() {
-        Callback<List<Avance>> listener = new Callback<List<Avance>>() {
+        Callback<DataSetAvance> listener = new Callback<DataSetAvance>() {
             @Override
-            public void success(List<Avance> avanceList) {
-                postEvent(avanceList);
+            public void success(DataSetAvance dataSet) {
+                postEvent(dataSet.getAvances());
             }
 
             @Override

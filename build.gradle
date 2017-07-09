@@ -34,7 +34,7 @@ ext {
 
     supportLibraryVersion = '25.0.1'
     supportPreferenceVersion = '23.0.0'
-    playServicesVersion = '9.8.0'
+    playServicesVersion = '11.0.2'
     daggerVersion = '2.0.1'
     jsr250Version = '1.0'
     eventBusVersion = '3.0.0'

@@ -23,11 +23,11 @@ public abstract class Callback<T> implements retrofit2.Callback<T> {
             try {
                 final Exception e = new Exception(response.errorBody().string());
 //                Timber.e(e, "Response error");
-                Log.d("Callback", "Response error");
+                Log.d("Callback", "Response error" + e.toString());
                 failure(e);
             } catch (IOException e) {
 //                Timber.e(e, "Network error after response error!");
-                Log.d("Callback", "Network error after response error!");
+                Log.d("Callback", "Network error after response error: " + e.toString());
                 failure(e);
             }
         }

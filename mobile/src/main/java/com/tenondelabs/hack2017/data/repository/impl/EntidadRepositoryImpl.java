@@ -2,6 +2,7 @@ package com.tenondelabs.hack2017.data.repository.impl;
 
 import android.util.Log;
 
+import com.tenondelabs.hack2017.data.model.DataSetEntidad;
 import com.tenondelabs.hack2017.data.model.Entidad;
 import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
@@ -34,10 +35,10 @@ public class EntidadRepositoryImpl implements EntidadRepository {
 
     @Override
     public void getEntidades() {
-        Callback<List<Entidad>> listener = new Callback<List<Entidad>>() {
+        Callback<DataSetEntidad> listener = new Callback<DataSetEntidad>() {
             @Override
-            public void success(List<Entidad> ciudadList) {
-                postEvent(ciudadList);
+            public void success(DataSetEntidad dataSet) {
+                postEvent(dataSet.getEntidades());
             }
 
             @Override
@@ -58,7 +59,6 @@ public class EntidadRepositoryImpl implements EntidadRepository {
 
     @Override
     public void getEntidadesFromStorage() {
-//        realm.executeTransactionAsync()
         RealmResults<Entidad> gobernaciones = realm.where(Entidad.class)
                 .findAll();
         Log.d("CiudadRepository", "CIU CANT: " + gobernaciones.size());
@@ -72,10 +72,7 @@ public class EntidadRepositoryImpl implements EntidadRepository {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-//                for (Entidad gobernacion : gobernacionList) {
-//                    gobernacion = realm.createObject(Entidad.class);
-                    realm.insert(gobernacionList);
-//                }
+                realm.insert(gobernacionList);
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override
