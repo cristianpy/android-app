@@ -1,20 +1,31 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.lastserv.hack2017"
+        applicationId "com.tenondelabs.hack2017"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "GMAPS_API_KEY", project.property('GMAPS_API_KEY'))
+            resValue("string", "GMAPS_API_KEY", project.property('GMAPS_API_KEY'))
+        }
+        debug {
+            buildConfigField("String", "GMAPS_API_KEY", project.property('GMAPS_API_KEY'))
+            resValue("string", "GMAPS_API_KEY", project.property('GMAPS_API_KEY'))
         }
     }
 }
@@ -40,4 +51,74 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
+
+//    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+//    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+//    compile "com.android.support:preference-v7:$rootProject.ext.supportPreferenceVersion"
+//    compile "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
+//    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+//    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
+//
+//    compile "com.google.android.gms:play-services-maps:$rootProject.ext.playServicesVersion"
+    //compile "com.google.android.gms:play-services-analytics:$rootProject.ext.playServicesVersion"
+
+    //Dager2
+    apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    compile "javax.annotation:jsr250-api:$rootProject.ext.jsr250Version"
+
+    //EventBus
+    compile "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
+
+    //Square
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    //compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
+    compile "com.squareup.picasso:picasso:$rootProject.ext.picassoVersion"
+    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okHttpVersion"
+
+    //Jake Wharton
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    //compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
+
+    //Realm.io
+    compile 'io.realm:android-adapters:1.3.0'
+
+    //ImageSlider
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+
+    //ShortcutBadger
+    compile "me.leolin:ShortcutBadger:1.1.16@aar"
+
+    //Others
+    compile 'com.balysv:material-ripple:1.0.2'
+    compile 'com.makeramen:roundedimageview:2.2.1'
+
+    //test
+    androidTestCompile "junit:junit:$rootProject.ext.jUnitVersion"
+//    androidTestCompile "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
+//    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion") {
+//        exclude group: 'com.android.support', module: 'appcompat'
+//        exclude group: 'com.android.support', module: 'support-v4'
+//        exclude group: 'com.android.support', module: 'recyclerview-v7'
+//    }
+
+//    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
+//    androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
+    //androidTestCompile "com.android.support.test.uiautomator:uiautomator-v18:$rootProject.ext.uiAutomatorVersion"
+//    androidTestCompile "com.android.support.test:runner:$rootProject.ext.runnerVersion"
+//    androidTestCompile "com.android.support.test:rules:$rootProject.ext.runnerVersion"
+//    androidTestCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+//    androidTestCompile "com.crittercism.dexmaker:dexmaker:$rootProject.ext.dexMakerVersion"
+//    androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:$rootProject.ext.dexMakerVersion"
+//    androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:$rootProject.ext.dexMakerVersion"
+
+//    testCompile "junit:junit:$rootProject.ext.jUnitVersion"
+//    testCompile "org.hamcrest:hamcrest-core:$rootProject.ext.hamcrestVersion"
+//    testCompile "org.hamcrest:hamcrest-library:$rootProject.ext.hamcrestVersion"
+//    testCompile "org.hamcrest:hamcrest-integration:$rootProject.ext.hamcrestVersion"
+//    testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+//    testCompile "org.robolectric:robolectric:$rootProject.ext.roboelectricVersion"
 }
