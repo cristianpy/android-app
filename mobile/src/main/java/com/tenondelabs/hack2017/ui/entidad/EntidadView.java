@@ -1,6 +1,6 @@
 package com.tenondelabs.hack2017.ui.entidad;
 
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Entidad;
 import com.tenondelabs.hack2017.ui.base.BaseView;
 
 import java.util.List;
@@ -12,5 +12,5 @@ import java.util.List;
  * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public interface EntidadView extends BaseView {
-    void setGobernaciones(List<Gobernacion> ciudades);
+    void setEntidades(List<Entidad> entidades);
 }

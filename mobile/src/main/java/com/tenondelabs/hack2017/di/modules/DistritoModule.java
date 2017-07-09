@@ -27,39 +27,39 @@ import io.realm.Realm;
 @Module
 public class DistritoModule {
 
-    private GobernacionView gobernacionView;
+    private DistritoView distritoView;
 
-    public DistritoModule(GobernacionView gobernacionView) {
-        this.gobernacionView = gobernacionView;
+    public DistritoModule(DistritoView distritoView) {
+        this.distritoView = distritoView;
     }
 
     @Provides
     @Singleton
-    GobernacionView provideGobernacionView() {
-        return this.gobernacionView;
+    DistritoView provideDistritoView() {
+        return this.distritoView;
     }
 
     @Provides
     @Singleton
-    GobernacionPresenter provideGobernacionPresenter(GobernacionView ciudadView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        return new GobernacionPresenterImpl(ciudadView, gobernacionInteractor, eventBus);
+    DistritoPresenter provideDistritoPresenter(DistritoView ciudadView, DistritoInteractor distritoInteractor, EventBus eventBus) {
+        return new DistritoPresenterImpl(ciudadView, distritoInteractor, eventBus);
     }
 
     @Provides
-    GobernacionAdapter provideAdapter(Context context) {
-        return new GobernacionAdapter(context);
-    }
-
-    @Provides
-    @Singleton
-    GobernacionInteractor provideGobernacionInteractor(GobernacionRepository ciudadRepository) {
-        return new GobernacionInteractorImpl(ciudadRepository);
+    DistritoAdapter provideAdapter(Context context) {
+        return new DistritoAdapter(context);
     }
 
     @Provides
     @Singleton
-    GobernacionRepository provideGobernacionRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
-        return new GobernacionRepositoryImpl(client, eventBus, realm);
+    DistritoInteractor provideDistritoInteractor(DistritoRepository ciudadRepository) {
+        return new DistritoInteractorImpl(ciudadRepository);
+    }
+
+    @Provides
+    @Singleton
+    DistritoRepository provideDistritoRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
+        return new DistritoRepositoryImpl(client, eventBus, realm);
     }
 
 }

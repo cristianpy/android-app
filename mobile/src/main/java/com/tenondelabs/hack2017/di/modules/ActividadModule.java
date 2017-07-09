@@ -27,39 +27,39 @@ import io.realm.Realm;
 @Module
 public class ActividadModule {
 
-    private GobernacionView gobernacionView;
+    private ActividadView actidadView;
 
-    public ActividadModule(GobernacionView gobernacionView) {
-        this.gobernacionView = gobernacionView;
+    public ActividadModule(ActividadView actividadView) {
+        this.actividadView = actividadView;
     }
 
     @Provides
     @Singleton
-    GobernacionView provideGobernacionView() {
-        return this.gobernacionView;
+    ActividadView provideActividadView() {
+        return this.actividadView;
     }
 
     @Provides
     @Singleton
-    GobernacionPresenter provideGobernacionPresenter(GobernacionView ciudadView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        return new GobernacionPresenterImpl(ciudadView, gobernacionInteractor, eventBus);
+    ActividadPresenter provideActividadPresenter(ActividadView ciudadView, ActividadInteractor actividadInteractor, EventBus eventBus) {
+        return new ActividadPresenterImpl(ciudadView, actividadInteractor, eventBus);
     }
 
     @Provides
-    GobernacionAdapter provideAdapter(Context context) {
-        return new GobernacionAdapter(context);
-    }
-
-    @Provides
-    @Singleton
-    GobernacionInteractor provideGobernacionInteractor(GobernacionRepository ciudadRepository) {
-        return new GobernacionInteractorImpl(ciudadRepository);
+    ActividadAdapter provideAdapter(Context context) {
+        return new ActividadAdapter(context);
     }
 
     @Provides
     @Singleton
-    GobernacionRepository provideGobernacionRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
-        return new GobernacionRepositoryImpl(client, eventBus, realm);
+    ActividadInteractor provideActividadInteractor(ActividadRepository ciudadRepository) {
+        return new ActividadInteractorImpl(ciudadRepository);
+    }
+
+    @Provides
+    @Singleton
+    ActividadRepository provideActividadRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
+        return new ActividadRepositoryImpl(client, eventBus, realm);
     }
 
 }

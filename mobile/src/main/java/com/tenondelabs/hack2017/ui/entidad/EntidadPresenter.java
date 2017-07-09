@@ -9,7 +9,7 @@ import com.tenondelabs.hack2017.ui.base.Presenter;
  * Copyright 2016 Akibusca Inc. All rights reserved
  */
 public interface EntidadPresenter extends Presenter {
-    void getGobernaciones();
-    void loadGobernaciones();
-    void onEventMainThread(EntidadEvent gobernacionEvent);
+    void getEntidades();
+    void loadEntidades();
+    void onEventMainThread(EntidadEvent entidadEvent);
 }

@@ -13,7 +13,7 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Entidad;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 import java.util.List;
@@ -34,43 +34,43 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 
 	private static final String TAG = EntidadListFragment.class.getSimpleName();
 
-	@Bind(R.id.container_gobernacion) FrameLayout container;
-	@Bind(R.id.gridview_gobernacion) GridView mGridViewGobernacion;
-	@Bind(R.id.swipe_layout_gobernacion) SwipeRefreshLayout mSwipeRefreshLayout;
-	@Bind(R.id.progress_indicator_gobernacion) ProgressBar mProgressBar;
+	@Bind(R.id.container_entidad) FrameLayout container;
+	@Bind(R.id.gridview_entidad) GridView mGridViewEntidad;
+	@Bind(R.id.swipe_layout_entidad) SwipeRefreshLayout mSwipeRefreshLayout;
+	@Bind(R.id.progress_indicator_entidad) ProgressBar mProgressBar;
 
 	@Inject
 	EntidadAdapter adapter;
 	@Inject
-	EntidadPresenter ciudadPresenter;
+	EntidadPresenter entidadPresenter;
 //	@Inject Realm realm;
 
-	private static EntidadListFragment gobernacionListFragment;
+	private static EntidadListFragment entidadListFragment;
 	private String action;
 
 	public EntidadListFragment() { }
 
 	public static EntidadListFragment getInstance() {
-		if (gobernacionListFragment == null) {
-			gobernacionListFragment = new EntidadListFragment();
+		if (entidadListFragment == null) {
+			entidadListFragment = new EntidadListFragment();
 		}
 
-		return gobernacionListFragment;
+		return entidadListFragment;
 	}
 
 	public static EntidadListFragment newInstance(String action) {
-		EntidadListFragment ciudadListFragment = new EntidadListFragment();
-		ciudadListFragment.setAction(action);
+		EntidadListFragment entidadListFragment = new EntidadListFragment();
+		entidadListFragment.setAction(action);
 
-		return ciudadListFragment;
+		return entidadListFragment;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_gobernacion, container, false);
+		View view = inflater.inflate(R.layout.fragment_entidad, container, false);
 		ButterKnife.bind(this, view);
 
-		mGridViewGobernacion.setOnItemClickListener(this);
+		mGridViewEntidad.setOnItemClickListener(this);
 		mSwipeRefreshLayout.setOnRefreshListener(this);
 
 		mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -86,29 +86,29 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	@Override
 	public void onResume() {
 		super.onResume();
-		ciudadPresenter.onResume();
-		ciudadPresenter.getGobernaciones();
-//		loadGobernaciones();
+		entidadPresenter.onResume();
+		entidadPresenter.getEntidades();
+//		loadEntidades();
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		ciudadPresenter.onPause();
+		entidadPresenter.onPause();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ciudadPresenter.onDestroy();
+		entidadPresenter.onDestroy();
 //		realm.close();
 	}
 
 	@Override
 	public void onRefresh() {
-		adapter.clearGobernaciones();
-		ciudadPresenter.getGobernaciones();
-//        loadGobernaciones();
+		adapter.clearEntidades();
+		entidadPresenter.getEntidades();
+//        loadEntidades();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);
@@ -142,8 +142,8 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	}
 
 	@Override
-	public void setGobernaciones(List<Gobernacion> gobernacionList) {
-		adapter.addGobernaciones(gobernacionList);
+	public void setEntidades(List<Entidad> entidadList) {
+		adapter.addEntidades(entidadList);
 	}
 
 	//Helper Methods
@@ -152,7 +152,7 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 //				.builder()
 //				.mainModule(new MainModule(getContext()))
 //				.libsModule(new LibsModule(this))
-//				.ciudadModule(new CiudadModule(this))
+//				.entidadModule(new CiudadModule(this))
 //				.build()
 //				.inject(this);
 	}
@@ -161,17 +161,17 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 //		if (getAction() != null) {
 //			adapter.setAction(getAction());
 //		}
-		mGridViewGobernacion.setAdapter(adapter);
+		mGridViewEntidad.setAdapter(adapter);
 	}
 
-//	private void loadGobernaciones() {
-//		RealmResults<Gobernacion> results = realm.where(Gobernacion.class).findAll();
+//	private void loadEntidades() {
+//		RealmResults<Entidad> results = realm.where(Entidad.class).findAll();
 //
 //		hideProgress();
 //
 //		if (!results.isEmpty()) {
-//			adapter.clearGobernaciones();
-//			adapter.addGobernaciones(results);
+//			adapter.clearEntidades();
+//			adapter.addEntidades(results);
 //		} else {
 //			Snackbar.make(container, "No es posible cargar Cuidades", Snackbar.LENGTH_LONG).show();
 //		}
@@ -182,15 +182,15 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 	}
 
 	private void openCategoriaActivity(int position) {
-		long ciudadId = adapter.getItemId(position);
+		long entidadId = adapter.getItemId(position);
 
 //		Intent intent = new Intent(getActivity(), CategoriaActivity.class);
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
+//		intent.putExtra(Util.CODIGO_CIUDAD, entidadId);
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
 	private void openActionActivity(int position, String action) {
-		long ciudadId = adapter.getItemId(position);
+		long entidadId = adapter.getItemId(position);
 		Intent intent;
 
 //		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0) {
@@ -201,7 +201,7 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 //			intent = new Intent(getActivity(), CategoriaActivity.class);
 //		}
 //
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
+//		intent.putExtra(Util.CODIGO_CIUDAD, entidadId);
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 

@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.entidad;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.interactors.EntidadInteractor;
+import com.tenondelabs.hack2017.data.model.Entidad;
 import com.tenondelabs.hack2017.helpers.EventBus;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class EntidadPresenterImpl implements EntidadPresenter {
 
-    private EntidadView gobernacionView;
-    private GobernacionInteractor gobernacionInteractor;
+    private EntidadView entidadView;
+    private EntidadInteractor entidadInteractor;
     private EventBus eventBus;
 
-    public EntidadPresenterImpl(EntidadView gobernacionView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        this.gobernacionView = gobernacionView;
-        this.gobernacionInteractor = gobernacionInteractor;
+    public EntidadPresenterImpl(EntidadView entidadView, EntidadInteractor entidadInteractor, EventBus eventBus) {
+        this.entidadView = entidadView;
+        this.entidadInteractor = entidadInteractor;
         this.eventBus = eventBus;
     }
 
@@ -38,40 +38,40 @@ public class EntidadPresenterImpl implements EntidadPresenter {
 
     @Override
     public void onDestroy() {
-        this.gobernacionView = null;
+        this.entidadView = null;
     }
 
     @Override
-    public void getGobernaciones() {
-        if (this.gobernacionView != null) {
-            gobernacionView.showProgress();
+    public void getEntidades() {
+        if (this.entidadView != null) {
+            entidadView.showProgress();
         }
 
-        this.gobernacionInteractor.getGobernacionList();
+        this.entidadInteractor.getEntidadList();
     }
 
     @Override
-    public void loadGobernaciones() {
-        if (this.gobernacionView != null) {
-            gobernacionView.showProgress();
+    public void loadEntidades() {
+        if (this.entidadView != null) {
+            entidadView.showProgress();
         }
 
-        this.gobernacionInteractor.loadGobernacionesFromStorage();
+        this.entidadInteractor.loadEntidadesFromStorage();
     }
 
     @Override
     @Subscribe
-    public void onEventMainThread(EntidadEvent ciudadEvent) {
-        String errorMsg = ciudadEvent.getError();
-        if (this.gobernacionView != null) {
-            this.gobernacionView.hideProgress();
+    public void onEventMainThread(EntidadEvent entidadEvent) {
+        String errorMsg = entidadEvent.getError();
+        if (this.entidadView != null) {
+            this.entidadView.hideProgress();
 
             if (errorMsg != null) {
-                gobernacionView.onEntityError(errorMsg);
+                entidadView.onEntityError(errorMsg);
             } else {
-                List<Gobernacion> items = ciudadEvent.getGobernaciones();
+                List<Entidad> items = entidadEvent.getEntidades();
                 if (items != null && !items.isEmpty()) {
-                    gobernacionView.setGobernaciones(items);
+                    entidadView.setEntidades(items);
                 }
             }
         }

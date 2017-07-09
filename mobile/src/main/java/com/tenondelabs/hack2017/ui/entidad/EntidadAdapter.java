@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.tenondelabs.hack2017.R;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Entidad;
 import com.tenondelabs.hack2017.ui.util.RobotoFontUtil;
 
 import java.util.ArrayList;
@@ -31,35 +31,35 @@ public class EntidadAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private LayoutInflater mInflater;
-	private ArrayList<Gobernacion> mGobernaciones;
+	private ArrayList<Entidad> mEntidades;
 //	private String action;
 //	private Realm realm;
 
 	public EntidadAdapter(Context context) {
 		this.mContext = context;
-		this.mGobernaciones = new ArrayList<>();
+		this.mEntidades = new ArrayList<>();
 
 		if (mContext != null) {
 			mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 	}
 
-	public void addGobernaciones(List<Gobernacion> gobernaciones){
-		mGobernaciones.addAll(gobernaciones);
+	public void addEntidades(List<Entidad> gobernaciones){
+		mEntidades.addAll(gobernaciones);
 		notifyDataSetChanged();
 	}
 
-	public void clearGobernaciones(){
-		mGobernaciones.clear();
+	public void clearEntidades(){
+		mEntidades.clear();
 		notifyDataSetChanged();
 	}
 
-	public List<Gobernacion> getGobernaciones(){
-		return mGobernaciones;
+	public List<Entidad> getEntidades(){
+		return mEntidades;
 	}
 
-	public Gobernacion getGobernacion(int position) {
-		return mGobernaciones.get(position);
+	public Entidad getEntidad(int position) {
+		return mEntidades.get(position);
 	}
 
 //	public void setAction(String accion) {
@@ -67,12 +67,12 @@ public class EntidadAdapter extends BaseAdapter {
 //	}
 
 	//Patron ViewHolder
-	public class ViewHolderCiudad {
-		@Bind(R.id.img_ciudad) ImageView mImgCiudad;
-		@Bind(R.id.txt_nombre_ciudad) TextView mTxtNombreCiudad;
+	public class ViewHolderEntidad {
+		@Bind(R.id.img_entidad) ImageView mImgEntidad;
+		@Bind(R.id.txt_nombre_entidad) TextView mTxtNombreEntidad;
 		@Bind(R.id.img_today) ImageView mImgToday;
 
-		public ViewHolderCiudad(View view){
+		public ViewHolderEntidad(View view){
 			ButterKnife.bind(this, view);
 		}
 
@@ -80,46 +80,46 @@ public class EntidadAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return mGobernaciones == null ? 0 : mGobernaciones.size();
+		return mEntidades == null ? 0 : mEntidades.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mGobernaciones.get(position);
+		return mEntidades.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		if (mGobernaciones.get(position) == null) {
+		if (mEntidades.get(position) == null) {
 			return -1;
 		}
-		return mGobernaciones.get(position).getId();
+		return mEntidades.get(position).getId();
 	}
 
 	@Override
 	public View getView(int position, View view, ViewGroup viewGroup) {
-		ViewHolderCiudad viewHolder;
+		ViewHolderEntidad viewHolder;
 
 		if (view == null) {
 			view = mInflater.inflate(R.layout.gobernacion_list_item, viewGroup, false) ;
-			viewHolder = new ViewHolderCiudad(view);
+			viewHolder = new ViewHolderEntidad(view);
 			view.setTag(viewHolder);
 		} else {
-			viewHolder = (ViewHolderCiudad) view.getTag();
+			viewHolder = (ViewHolderEntidad) view.getTag();
 		}
 
 		Picasso.with(mContext)
-				.load(mGobernaciones.get(position).getImagen())
+				.load(mEntidades.get(position).getImagen())
 				.fit()
 //				.placeholder(R.drawable.ic_carrete_eventos_table)
 //				.error(R.drawable.ic_pin_drop_white_24dp)
-				.into(viewHolder.mImgCiudad);
+				.into(viewHolder.mImgEntidad);
 
-		viewHolder.mTxtNombreCiudad.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
-		viewHolder.mTxtNombreCiudad.setText(mGobernaciones.get(position).getNombre());
+		viewHolder.mTxtNombreEntidad.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
+		viewHolder.mTxtNombreEntidad.setText(mEntidades.get(position).getNombre());
 
 //		if (action!=null){
-//			checkFavorites(mGobernaciones.get(position).getId(),viewHolder);
+//			checkFavorites(mEntidades.get(position).getId(),viewHolder);
 //		}
 
 		return view;
@@ -129,7 +129,7 @@ public class EntidadAdapter extends BaseAdapter {
 //		realm = Realm.getDefaultInstance();
 //	}
 
-//	private void checkFavorites(long ciudadId, ViewHolderCiudad viewHolder) {
+//	private void checkFavorites(long entidadId, ViewHolderEntidad viewHolder) {
 //		Calendar auxCalendar = Calendar.getInstance();
 //		auxCalendar.set(Calendar.HOUR_OF_DAY,0);
 //		auxCalendar.set(Calendar.MINUTE,0);
@@ -141,14 +141,14 @@ public class EntidadAdapter extends BaseAdapter {
 //			count = realm.where(Evento.class)
 //					.equalTo("fecha",auxCalendar.getTime())
 //					.equalTo("favorito", true)
-//					.equalTo("ciudadId", ciudadId)
+//					.equalTo("entidadId", entidadId)
 //					.count();
 //		}else if(action.compareTo(Util.PROMO_BY_CIUDAD) == 0){
 //			count = realm.where(Promocion.class)
 //					.lessThanOrEqualTo("fechaInicio",auxCalendar.getTime())
 //					.greaterThanOrEqualTo("fechaFin",auxCalendar.getTime())
 //					.equalTo("favorito", true)
-//					.equalTo("ciudadId", ciudadId)
+//					.equalTo("entidadId", entidadId)
 //					.count();
 //		}
 //		realm.close();

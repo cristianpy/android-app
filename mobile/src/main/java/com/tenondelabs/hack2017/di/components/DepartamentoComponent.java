@@ -14,7 +14,7 @@ import dagger.Component;
  * @version 1.0
  * Copyright 2016 Akibusca Inc. All rights reserved
  */
-@Singleton @Component(modules = {MainModule.class, LibsModule.class, GobernacionModule.class})
+@Singleton @Component(modules = {MainModule.class, LibsModule.class, DepartamentoModule.class})
 public interface DepartamentoComponent {
-    void inject(GobernacionListFragment fragment);
+    void inject(DepartamentoListFragment fragment);
 }

@@ -27,39 +27,39 @@ import io.realm.Realm;
 @Module
 public class DepartamentoModule {
 
-    private GobernacionView gobernacionView;
+    private DepartamentoView departamentoView;
 
-    public DepartamentoModule(GobernacionView gobernacionView) {
-        this.gobernacionView = gobernacionView;
+    public DepartamentoModule(DepartamentoView departamentoView) {
+        this.departamentoView = departamentoView;
     }
 
     @Provides
     @Singleton
-    GobernacionView provideGobernacionView() {
-        return this.gobernacionView;
+    DepartamentoView provideDepartamentoView() {
+        return this.departamentoView;
     }
 
     @Provides
     @Singleton
-    GobernacionPresenter provideGobernacionPresenter(GobernacionView ciudadView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        return new GobernacionPresenterImpl(ciudadView, gobernacionInteractor, eventBus);
+    DepartamentoPresenter provideDepartamentoPresenter(DepartamentoView ciudadView, DepartamentoInteractor departamentoInteractor, EventBus eventBus) {
+        return new DepartamentoPresenterImpl(ciudadView, departamentoInteractor, eventBus);
     }
 
     @Provides
-    GobernacionAdapter provideAdapter(Context context) {
-        return new GobernacionAdapter(context);
-    }
-
-    @Provides
-    @Singleton
-    GobernacionInteractor provideGobernacionInteractor(GobernacionRepository ciudadRepository) {
-        return new GobernacionInteractorImpl(ciudadRepository);
+    DepartamentoAdapter provideAdapter(Context context) {
+        return new DepartamentoAdapter(context);
     }
 
     @Provides
     @Singleton
-    GobernacionRepository provideGobernacionRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
-        return new GobernacionRepositoryImpl(client, eventBus, realm);
+    DepartamentoInteractor provideDepartamentoInteractor(DepartamentoRepository ciudadRepository) {
+        return new DepartamentoInteractorImpl(ciudadRepository);
+    }
+
+    @Provides
+    @Singleton
+    DepartamentoRepository provideDepartamentoRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
+        return new DepartamentoRepositoryImpl(client, eventBus, realm);
     }
 
 }
