@@ -11,7 +11,7 @@ import io.realm.RealmObject;
 public class Avance extends RealmObject {
 
     private Long id;
-    private Long avanceId
+    private Long avanceId;
     private String justificacion;
     private String cantidad;
     private Date fechaAvance;
@@ -85,14 +85,6 @@ public class Avance extends RealmObject {
         this.fechaFin = fechaFin;
     }
 
-    public Long getEntidadIc() {
-        return entidadIc;
-    }
-
-    public void setEntidadIc(Long entidadIc) {
-        this.entidadIc = entidadIc;
-    }
-
     public String getEntidadSigla() {
         return entidadSigla;
     }
@@ -155,5 +147,13 @@ public class Avance extends RealmObject {
 
     public void setDistritoNombre(String distritoNombre) {
         this.distritoNombre = distritoNombre;
+    }
+
+    public Long getEntidadId() {
+        return entidadId;
+    }
+
+    public void setEntidadId(Long entidadId) {
+        this.entidadId = entidadId;
     }
 }

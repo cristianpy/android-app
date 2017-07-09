@@ -1,7 +1,5 @@
 package com.tenondelabs.hack2017.data.repository.impl;
 
-import android.util.Log;
-
 import com.tenondelabs.hack2017.data.model.Avance;
 import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
@@ -36,8 +34,8 @@ public class AvanceRepositoryImpl implements AvanceRepository {
     public void getAvances() {
         Callback<List<Avance>> listener = new Callback<List<Avance>>() {
             @Override
-            public void success(List<Avance> ciudadList) {
-                postEvent(ciudadList);
+            public void success(List<Avance> avanceList) {
+                postEvent(avanceList);
             }
 
             @Override
@@ -58,12 +56,10 @@ public class AvanceRepositoryImpl implements AvanceRepository {
 
     @Override
     public void getAvancesFromStorage() {
-//        realm.executeTransactionAsync()
-        RealmResults<Avance> gobernaciones = realm.where(Avance.class)
+        RealmResults<Avance> avances = realm.where(Avance.class)
                 .findAll();
-        Log.d("CiudadRepository", "CIU CANT: " + gobernaciones.size());
-        if (gobernaciones.isLoaded()) {
-            postEvent(gobernaciones);
+        if (avances.isLoaded()) {
+            postEvent(avances);
         }
     }
 
@@ -72,10 +68,7 @@ public class AvanceRepositoryImpl implements AvanceRepository {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-//                for (Avance gobernacion : gobernacionList) {
-//                    gobernacion = realm.createObject(Avance.class);
-                    realm.insert(avanceList);
-//                }
+                realm.insert(avanceList);
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override

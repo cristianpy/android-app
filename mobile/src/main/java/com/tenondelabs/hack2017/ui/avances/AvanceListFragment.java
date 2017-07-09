@@ -1,7 +1,6 @@
 package com.tenondelabs.hack2017.ui.avances;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -49,6 +48,9 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 
 	private static AvanceListFragment gobernacionListFragment;
 
+	private String deptId;
+	private String entidadId;
+
 	private OnFragmentInteractionListener listener;
 
 	public AvanceListFragment() { }
@@ -61,8 +63,9 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 		return gobernacionListFragment;
 	}
 
-	public static AvanceListFragment newInstance(String action) {
+	public static AvanceListFragment newInstance(String departId) {
 		AvanceListFragment avanceListFragment = new AvanceListFragment();
+
 
 		return avanceListFragment;
 	}
@@ -80,7 +83,6 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 
 		setupInjection();
 		setupGridView();
-		//loadCiudades(); **Moved to onResume to refresh on back to activity**
 
 		return view;
 	}
@@ -90,7 +92,6 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 		super.onResume();
 		ciudadPresenter.onResume();
 		ciudadPresenter.getAvances();
-//		loadGobernaciones();
 	}
 
 	@Override
@@ -103,14 +104,12 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	public void onDestroy() {
 		super.onDestroy();
 		ciudadPresenter.onDestroy();
-//		realm.close();
 	}
 
 	@Override
 	public void onRefresh() {
 		adapter.clearGobernaciones();
 		ciudadPresenter.getAvances();
-//        loadGobernaciones();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);
@@ -171,24 +170,8 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	}
 
 	private void setupGridView() {
-//		if (getAction() != null) {
-//			adapter.setAction(getAction());
-//		}
 		mGridViewAvances.setAdapter(adapter);
 	}
-
-//	private void loadGobernaciones() {
-//		RealmResults<Gobernacion> results = realm.where(Gobernacion.class).findAll();
-//
-//		hideProgress();
-//
-//		if (!results.isEmpty()) {
-//			adapter.clearGobernaciones();
-//			adapter.addGobernaciones(results);
-//		} else {
-//			Snackbar.make(container, "No es posible cargar Cuidades", Snackbar.LENGTH_LONG).show();
-//		}
-//	}
 
 	private boolean hasAdapter() {
 		return (adapter != null);
@@ -202,22 +185,22 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
-	private void openActionActivity(int position, String action) {
-		long ciudadId = adapter.getItemId(position);
-		Intent intent;
+	public interface OnFragmentInteractionListener { }
 
-//		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0) {
-//			intent = new Intent(getActivity(), EventoActivity.class);
-//		} else if (action.compareTo(Util.PROMO_BY_CIUDAD) == 0) {
-//			intent = new Intent(getActivity(), PromocionActivity.class);
-//		} else {
-//			intent = new Intent(getActivity(), CategoriaActivity.class);
-//		}
-//
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
-//		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+	public String getEntidadId() {
+		return entidadId;
 	}
 
-	public interface OnFragmentInteractionListener { }
+	public void setEntidadId(String entidadId) {
+		this.entidadId = entidadId;
+	}
+
+	public String getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(String deptId) {
+		this.deptId = deptId;
+	}
 
 }
