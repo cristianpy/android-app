@@ -1,5 +1,7 @@
 package com.tenondelabs.hack2017.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmObject;
 
 /**
@@ -10,6 +12,9 @@ import io.realm.RealmObject;
 public class Gobernacion extends RealmObject {
 
     private Long id;
+    @SerializedName("dpto")
+    private String dpto;
+    @SerializedName("dpto_desc")
     private String nombre;
     private String imagen;
 
@@ -37,5 +42,13 @@ public class Gobernacion extends RealmObject {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getDpto() {
+        return dpto;
+    }
+
+    public void setDpto(String dpto) {
+        this.dpto = dpto;
     }
 }
