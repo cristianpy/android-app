@@ -7,7 +7,7 @@ import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
 import com.tenondelabs.hack2017.data.repository.AvanceRepository;
 import com.tenondelabs.hack2017.helpers.EventBus;
-import com.tenondelabs.hack2017.ui.gobernacion.AvanceEvent;
+import com.tenondelabs.hack2017.ui.avances.AvanceEvent;
 
 import java.util.List;
 
@@ -68,13 +68,13 @@ public class AvanceRepositoryImpl implements AvanceRepository {
     }
 
     @Override
-    public void saveAvancesStorage(final List<Avance> gobernacionList) {
+    public void saveAvanceStorage(final List<Avance> avanceList) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
 //                for (Avance gobernacion : gobernacionList) {
 //                    gobernacion = realm.createObject(Avance.class);
-                    realm.insert(gobernacionList);
+                    realm.insert(avanceList);
 //                }
             }
         }, new Realm.Transaction.OnSuccess() {

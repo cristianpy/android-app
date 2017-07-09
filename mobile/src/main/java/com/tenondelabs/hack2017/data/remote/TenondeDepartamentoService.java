@@ -1,6 +1,6 @@
 package com.tenondelabs.hack2017.data.remote;
 
-import com.tenondelabs.hack2017.data.model.Departamento;
+import com.tenondelabs.hack2017.data.model.Gobernacion;
 
 import java.util.List;
 
@@ -17,6 +17,6 @@ public interface TenondeDepartamentoService {
 
     //Resource ciudades
     @GET("departamentos")
-    Call<List<Departamento>> getEventos();
+    Call<List<Gobernacion>> getDepartamentos();
 
 }

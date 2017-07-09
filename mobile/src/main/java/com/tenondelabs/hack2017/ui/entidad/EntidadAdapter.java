@@ -19,8 +19,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-;
-
 /**
  * @author Rodrigo Garcete
  * @version 1.0
@@ -101,7 +99,7 @@ public class EntidadAdapter extends BaseAdapter {
 		ViewHolderEntidad viewHolder;
 
 		if (view == null) {
-			view = mInflater.inflate(R.layout.gobernacion_list_item, viewGroup, false) ;
+			view = mInflater.inflate(R.layout.entidad_list_item, viewGroup, false) ;
 			viewHolder = new ViewHolderEntidad(view);
 			view.setTag(viewHolder);
 		} else {

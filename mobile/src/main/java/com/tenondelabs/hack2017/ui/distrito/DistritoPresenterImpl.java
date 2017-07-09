@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.distrito;
 
 import com.tenondelabs.hack2017.data.interactors.DistritoInteractor;
-import com.tenondelabs.hack2017.data.model.Distritos;
+import com.tenondelabs.hack2017.data.model.Distrito;
 import com.tenondelabs.hack2017.helpers.EventBus;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -17,10 +17,10 @@ import java.util.List;
 public class DistritoPresenterImpl implements DistritoPresenter {
 
     private DistritoView distritoView;
-    private DistritosInteractor distritoInteractor;
+    private DistritoInteractor distritoInteractor;
     private EventBus eventBus;
 
-    public DistritoPresenterImpl(DistritoView distritoView, DistritosInteractor distritoInteractor, EventBus eventBus) {
+    public DistritoPresenterImpl(DistritoView distritoView, DistritoInteractor distritoInteractor, EventBus eventBus) {
         this.distritoView = distritoView;
         this.distritoInteractor = distritoInteractor;
         this.eventBus = eventBus;
@@ -47,7 +47,7 @@ public class DistritoPresenterImpl implements DistritoPresenter {
             distritoView.showProgress();
         }
 
-        this.distritoInteractor.getDistritosList();
+        this.distritoInteractor.getDistritoList();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class DistritoPresenterImpl implements DistritoPresenter {
             if (errorMsg != null) {
                 distritoView.onEntityError(errorMsg);
             } else {
-                List<Distritos> items = distritoEvent.getDistritos();
+                List<Distrito> items = distritoEvent.getDistritos();
                 if (items != null && !items.isEmpty()) {
                     distritoView.setDistritos(items);
                 }

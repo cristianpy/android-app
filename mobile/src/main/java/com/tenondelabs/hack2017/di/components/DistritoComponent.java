@@ -1,9 +1,9 @@
 package com.tenondelabs.hack2017.di.components;
 
-import com.tenondelabs.hack2017.di.modules.GobernacionModule;
+import com.tenondelabs.hack2017.di.modules.DistritoModule;
 import com.tenondelabs.hack2017.di.modules.LibsModule;
 import com.tenondelabs.hack2017.di.modules.MainModule;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionListFragment;
+import com.tenondelabs.hack2017.ui.distrito.DistritoListFragment;
 
 import javax.inject.Singleton;
 

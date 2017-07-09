@@ -14,6 +14,10 @@ import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
 import com.tenondelabs.hack2017.data.model.Distrito;
+import com.tenondelabs.hack2017.di.components.DaggerDistritoComponent;
+import com.tenondelabs.hack2017.di.modules.DistritoModule;
+import com.tenondelabs.hack2017.di.modules.LibsModule;
+import com.tenondelabs.hack2017.di.modules.MainModule;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 import java.util.List;
@@ -39,10 +43,8 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 	@Bind(R.id.swipe_layout_distrito) SwipeRefreshLayout mSwipeRefreshLayout;
 	@Bind(R.id.progress_indicator_distrito) ProgressBar mProgressBar;
 
-	@Inject
-	DistritoAdapter adapter;
-	@Inject
-	DistritoPresenter distritoPresenter;
+	@Inject DistritoAdapter adapter;
+	@Inject DistritoPresenter distritoPresenter;
 //	@Inject Realm realm;
 
 	private static DistritoListFragment distritoListFragment;
@@ -67,7 +69,7 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_distrito, container, false);
+		View view = inflater.inflate(R.layout.fragment_gobernacion, container, false);
 		ButterKnife.bind(this, view);
 
 		mGridViewDistrito.setOnItemClickListener(this);
@@ -148,13 +150,13 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 
 	//Helper Methods
 	private void setupInjection() {
-//		DaggerCiudadComponent
-//				.builder()
-//				.mainModule(new MainModule(getContext()))
-//				.libsModule(new LibsModule(this))
-//				.distritoModule(new CiudadModule(this))
-//				.build()
-//				.inject(this);
+		DaggerDistritoComponent
+				.builder()
+				.mainModule(new MainModule(getContext()))
+				.libsModule(new LibsModule(this))
+				.distritoModule(new DistritoModule(this))
+				.build()
+				.inject(this);
 	}
 
 	private void setupGridView() {

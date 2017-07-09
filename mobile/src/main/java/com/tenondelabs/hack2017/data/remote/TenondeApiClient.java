@@ -31,16 +31,19 @@ public class TenondeApiClient {
     }
 
     public TenondeDistritoService getServiceDistrito() {
-        return getInstanceRetrofit(DISTRITO_URL).create(TenondeDistritoService.class);
+        return getInstanceRetrofit(DISTRITO_URL)
+                .create(TenondeDistritoService.class);
     }
 
     private Retrofit getInstanceRetrofit(String url) {
-        return new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
             .client(TenondeLabsApplication.getInstance().getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create(getInstanceGson()))
             //.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build();
+
+        return retrofit;
     }
 
     private Gson getInstanceGson() {

@@ -7,7 +7,7 @@ import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
 import com.tenondelabs.hack2017.data.repository.DistritoRepository;
 import com.tenondelabs.hack2017.helpers.EventBus;
-import com.tenondelabs.hack2017.ui.gobernacion.DistritoEvent;
+import com.tenondelabs.hack2017.ui.distrito.DistritoEvent;
 
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class DistritoRepositoryImpl implements DistritoRepository {
     public void getDistritos() {
         Callback<List<Distrito>> listener = new Callback<List<Distrito>>() {
             @Override
-            public void success(List<Distrito> ciudadList) {
-                postEvent(ciudadList);
+            public void success(List<Distrito> distritoList) {
+                postEvent(distritoList);
             }
 
             @Override
@@ -53,7 +53,7 @@ public class DistritoRepositoryImpl implements DistritoRepository {
             }
         };
 
-        client.getService().getDistritos().enqueue(listener);
+        client.getServiceDistrito().getDistritos().enqueue(listener);
     }
 
     @Override
@@ -68,13 +68,13 @@ public class DistritoRepositoryImpl implements DistritoRepository {
     }
 
     @Override
-    public void saveDistritosStorage(final List<Distrito> gobernacionList) {
+    public void saveDistritosStorage(final List<Distrito> distritoList) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
 //                for (Distrito gobernacion : gobernacionList) {
 //                    gobernacion = realm.createObject(Distrito.class);
-                    realm.insert(gobernacionList);
+                    realm.insert(distritoList);
 //                }
             }
         }, new Realm.Transaction.OnSuccess() {

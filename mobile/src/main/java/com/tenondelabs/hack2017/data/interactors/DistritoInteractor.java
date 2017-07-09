@@ -1,6 +1,6 @@
 package com.tenondelabs.hack2017.data.interactors;
 
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Distrito;
 
 import java.util.List;
 

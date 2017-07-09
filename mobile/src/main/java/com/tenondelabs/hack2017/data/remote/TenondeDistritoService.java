@@ -17,6 +17,6 @@ public interface TenondeDistritoService {
 
     //Resource ciudades
     @GET("distrito")
-    Call<List<Distrito>> getEventos();
+    Call<List<Distrito>> getDistritos();
 
 }

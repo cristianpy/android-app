@@ -1,8 +1,9 @@
 package com.tenondelabs.hack2017.data.interactors.impl;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
-import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
+
+import com.tenondelabs.hack2017.data.interactors.DistritoInteractor;
+import com.tenondelabs.hack2017.data.model.Distrito;
+import com.tenondelabs.hack2017.data.repository.DistritoRepository;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class DistritoInteractorImpl implements DistritoInteractor {
 
     private DistritoRepository distritoRepository;
 
-    public DistritoInteractorImpl(distritoRepository distritoRepository) {
+    public DistritoInteractorImpl(DistritoRepository distritoRepository) {
         this.distritoRepository = distritoRepository;
     }
 
@@ -31,6 +32,6 @@ public class DistritoInteractorImpl implements DistritoInteractor {
 
     @Override
     public void saveDistritos(List<Distrito> distritoList) {
-        distritoRepository.saveDistritoesStorage(distritoList);
+        distritoRepository.saveDistritosStorage(distritoList);
     }
 }

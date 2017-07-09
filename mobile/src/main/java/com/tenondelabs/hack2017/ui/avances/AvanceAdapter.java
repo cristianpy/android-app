@@ -67,7 +67,7 @@ public class AvanceAdapter extends BaseAdapter {
 	//Patron ViewHolder
 	public class ViewHolderCiudad {
 		@Bind(R.id.img_avance) ImageView mImgAvance;
-		@Bind(R.id.txt_justification) TextView mTxtJustificacion;
+		@Bind(R.id.txt_justificacion) TextView mTxtJustificacion;
 		@Bind(R.id.img_today) ImageView mImgToday;
 
 		public ViewHolderCiudad(View view){

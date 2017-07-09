@@ -1,8 +1,8 @@
 package com.tenondelabs.hack2017.data.interactors.impl;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
-import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
+import com.tenondelabs.hack2017.data.interactors.ActividadInteractor;
+import com.tenondelabs.hack2017.data.model.Actividad;
+import com.tenondelabs.hack2017.data.repository.ActividadRepository;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ActividadInteractorImpl implements ActividadInteractor {
 
     private ActividadRepository actividadRepository;
 
-    public ActividadInteractorImpl(actividadRepository actividadRepository) {
+    public ActividadInteractorImpl(ActividadRepository actividadRepository) {
         this.actividadRepository = actividadRepository;
     }
 
@@ -30,7 +30,7 @@ public class ActividadInteractorImpl implements ActividadInteractor {
     }
 
     @Override
-    public void saveActividades(List<Entidad> actividadList) {
+    public void saveActividades(List<Actividad> actividadList) {
         actividadRepository.saveActividadesStorage(actividadList);
     }
 }

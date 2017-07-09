@@ -14,6 +14,10 @@ import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
 import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.di.components.DaggerGobernacionComponent;
+import com.tenondelabs.hack2017.di.modules.GobernacionModule;
+import com.tenondelabs.hack2017.di.modules.LibsModule;
+import com.tenondelabs.hack2017.di.modules.MainModule;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 
@@ -147,13 +151,13 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 
 	//Helper Methods
 	private void setupInjection() {
-//		DaggerCiudadComponent
-//				.builder()
-//				.mainModule(new MainModule(getContext()))
-//				.libsModule(new LibsModule(this))
-//				.ciudadModule(new CiudadModule(this))
-//				.build()
-//				.inject(this);
+		DaggerGobernacionComponent
+				.builder()
+				.mainModule(new MainModule(getContext()))
+				.libsModule(new LibsModule(this))
+				.gobernacionModule(new GobernacionModule(this))
+				.build()
+				.inject(this);
 	}
 
 	private void setupGridView() {

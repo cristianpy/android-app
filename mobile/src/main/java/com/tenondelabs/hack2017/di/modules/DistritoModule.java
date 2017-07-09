@@ -2,16 +2,16 @@ package com.tenondelabs.hack2017.di.modules;
 
 import android.content.Context;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.interactors.impl.GobernacionInteractorImpl;
+import com.tenondelabs.hack2017.data.interactors.DistritoInteractor;
+import com.tenondelabs.hack2017.data.interactors.impl.DistritoInteractorImpl;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
-import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
-import com.tenondelabs.hack2017.data.repository.impl.GobernacionRepositoryImpl;
+import com.tenondelabs.hack2017.data.repository.DistritoRepository;
+import com.tenondelabs.hack2017.data.repository.impl.DistritoRepositoryImpl;
 import com.tenondelabs.hack2017.helpers.EventBus;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionAdapter;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionPresenter;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionPresenterImpl;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionView;
+import com.tenondelabs.hack2017.ui.distrito.DistritoAdapter;
+import com.tenondelabs.hack2017.ui.distrito.DistritoPresenter;
+import com.tenondelabs.hack2017.ui.distrito.DistritoPresenterImpl;
+import com.tenondelabs.hack2017.ui.distrito.DistritoView;
 
 import javax.inject.Singleton;
 

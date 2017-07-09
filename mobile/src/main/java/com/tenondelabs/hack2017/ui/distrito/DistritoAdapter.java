@@ -19,8 +19,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-;
-
 /**
  * @author Rodrigo Garcete
  * @version 1.0

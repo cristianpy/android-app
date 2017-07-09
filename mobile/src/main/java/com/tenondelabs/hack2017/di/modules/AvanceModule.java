@@ -2,16 +2,16 @@ package com.tenondelabs.hack2017.di.modules;
 
 import android.content.Context;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.interactors.impl.GobernacionInteractorImpl;
+import com.tenondelabs.hack2017.data.interactors.AvanceInteractor;
+import com.tenondelabs.hack2017.data.interactors.impl.AvanceInteractorImpl;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
-import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
-import com.tenondelabs.hack2017.data.repository.impl.GobernacionRepositoryImpl;
+import com.tenondelabs.hack2017.data.repository.AvanceRepository;
+import com.tenondelabs.hack2017.data.repository.impl.AvanceRepositoryImpl;
 import com.tenondelabs.hack2017.helpers.EventBus;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionAdapter;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionPresenter;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionPresenterImpl;
-import com.tenondelabs.hack2017.ui.gobernacion.GobernacionView;
+import com.tenondelabs.hack2017.ui.avances.AvanceAdapter;
+import com.tenondelabs.hack2017.ui.avances.AvancePresenter;
+import com.tenondelabs.hack2017.ui.avances.AvancePresenterImpl;
+import com.tenondelabs.hack2017.ui.avances.AvanceView;
 
 import javax.inject.Singleton;
 
@@ -52,7 +52,7 @@ public class AvanceModule {
 
     @Provides
     @Singleton
-    AvanceInteractor provideGobernacionInteractor(AvanceRepository ciudadRepository) {
+    AvanceInteractor provideAvanceInteractor(AvanceRepository ciudadRepository) {
         return new AvanceInteractorImpl(ciudadRepository);
     }
 

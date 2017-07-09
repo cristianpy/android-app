@@ -14,6 +14,10 @@ import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
 import com.tenondelabs.hack2017.data.model.Entidad;
+import com.tenondelabs.hack2017.di.components.DaggerEntidadComponent;
+import com.tenondelabs.hack2017.di.modules.EntidadModule;
+import com.tenondelabs.hack2017.di.modules.LibsModule;
+import com.tenondelabs.hack2017.di.modules.MainModule;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 import java.util.List;
@@ -148,13 +152,13 @@ public class EntidadListFragment extends BaseFragment implements EntidadView,
 
 	//Helper Methods
 	private void setupInjection() {
-//		DaggerCiudadComponent
-//				.builder()
-//				.mainModule(new MainModule(getContext()))
-//				.libsModule(new LibsModule(this))
-//				.entidadModule(new CiudadModule(this))
-//				.build()
-//				.inject(this);
+		DaggerEntidadComponent
+				.builder()
+				.mainModule(new MainModule(getContext()))
+				.libsModule(new LibsModule(this))
+				.entidadModule(new EntidadModule(this))
+				.build()
+				.inject(this);
 	}
 
 	private void setupGridView() {

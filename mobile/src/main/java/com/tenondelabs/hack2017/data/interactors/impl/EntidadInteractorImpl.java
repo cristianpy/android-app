@@ -1,8 +1,8 @@
 package com.tenondelabs.hack2017.data.interactors.impl;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
-import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
+import com.tenondelabs.hack2017.data.interactors.EntidadInteractor;
+import com.tenondelabs.hack2017.data.model.Entidad;
+import com.tenondelabs.hack2017.data.repository.EntidadRepository;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class EntidadInteractorImpl implements EntidadInteractor {
 
     private EntidadRepository entidadRepository;
 
-    public EntidadInteractorImpl(entidadRepository entidadRepository) {
+    public EntidadInteractorImpl(EntidadRepository entidadRepository) {
         this.entidadRepository = entidadRepository;
     }
 

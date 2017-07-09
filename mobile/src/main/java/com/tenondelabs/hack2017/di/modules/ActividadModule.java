@@ -24,42 +24,42 @@ import io.realm.Realm;
  * @version 1.0
  * Copyright 2016 Akibusca Inc. All rights reserved
  */
-@Module
+//@Module
 public class ActividadModule {
 
-    private ActividadView actidadView;
-
-    public ActividadModule(ActividadView actividadView) {
-        this.actividadView = actividadView;
-    }
-
-    @Provides
-    @Singleton
-    ActividadView provideActividadView() {
-        return this.actividadView;
-    }
-
-    @Provides
-    @Singleton
-    ActividadPresenter provideActividadPresenter(ActividadView ciudadView, ActividadInteractor actividadInteractor, EventBus eventBus) {
-        return new ActividadPresenterImpl(ciudadView, actividadInteractor, eventBus);
-    }
-
-    @Provides
-    ActividadAdapter provideAdapter(Context context) {
-        return new ActividadAdapter(context);
-    }
-
-    @Provides
-    @Singleton
-    ActividadInteractor provideActividadInteractor(ActividadRepository ciudadRepository) {
-        return new ActividadInteractorImpl(ciudadRepository);
-    }
-
-    @Provides
-    @Singleton
-    ActividadRepository provideActividadRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
-        return new ActividadRepositoryImpl(client, eventBus, realm);
-    }
+//    private ActividadView actidadView;
+//
+//    public ActividadModule(ActividadView actividadView) {
+//        this.actividadView = actividadView;
+//    }
+//
+//    @Provides
+//    @Singleton
+//    ActividadView provideActividadView() {
+//        return this.actividadView;
+//    }
+//
+//    @Provides
+//    @Singleton
+//    ActividadPresenter provideActividadPresenter(ActividadView ciudadView, ActividadInteractor actividadInteractor, EventBus eventBus) {
+//        return new ActividadPresenterImpl(ciudadView, actividadInteractor, eventBus);
+//    }
+//
+//    @Provides
+//    ActividadAdapter provideAdapter(Context context) {
+//        return new ActividadAdapter(context);
+//    }
+//
+//    @Provides
+//    @Singleton
+//    ActividadInteractor provideActividadInteractor(ActividadRepository ciudadRepository) {
+//        return new ActividadInteractorImpl(ciudadRepository);
+//    }
+//
+//    @Provides
+//    @Singleton
+//    ActividadRepository provideActividadRepository(TenondeApiClient client, EventBus eventBus, Realm realm) {
+//        return new ActividadRepositoryImpl(client, eventBus, realm);
+//    }
 
 }

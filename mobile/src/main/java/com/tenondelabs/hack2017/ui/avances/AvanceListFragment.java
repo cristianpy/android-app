@@ -14,6 +14,10 @@ import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
 import com.tenondelabs.hack2017.data.model.Avance;
+import com.tenondelabs.hack2017.di.components.DaggerAvanceComponent;
+import com.tenondelabs.hack2017.di.modules.AvanceModule;
+import com.tenondelabs.hack2017.di.modules.LibsModule;
+import com.tenondelabs.hack2017.di.modules.MainModule;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 import java.util.List;
@@ -139,13 +143,13 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 
 	//Helper Methods
 	private void setupInjection() {
-//		DaggerCiudadComponent
-//				.builder()
-//				.mainModule(new MainModule(getContext()))
-//				.libsModule(new LibsModule(this))
-//				.ciudadModule(new CiudadModule(this))
-//				.build()
-//				.inject(this);
+		DaggerAvanceComponent
+				.builder()
+				.mainModule(new MainModule(getContext()))
+				.libsModule(new LibsModule(this))
+				.avanceModule(new AvanceModule(this))
+				.build()
+				.inject(this);
 	}
 
 	private void setupGridView() {

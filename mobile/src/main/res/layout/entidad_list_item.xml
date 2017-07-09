@@ -9,7 +9,7 @@
     app:cardUseCompatPadding="true"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:id="@+id/cardview_distrito">
+    android:id="@+id/cardview_entidad">
 
     <!--<com.balysv.materialripple.MaterialRippleLayout-->
         <!--android:id="@+id/ripple_view_distrito"-->
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/img_distrito"
+                    android:id="@+id/img_entidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -62,9 +62,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/rounded_corner"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_checked_white" />
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -81,7 +79,7 @@
                 <!--android:layout_marginBottom="10dp"/>-->
 
             <TextView
-                android:id="@+id/txt_nombre_distrito"
+                android:id="@+id/txt_nombre_entidad"
                 style="@style/font_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

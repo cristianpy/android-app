@@ -7,7 +7,7 @@ import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
 import com.tenondelabs.hack2017.data.repository.EntidadRepository;
 import com.tenondelabs.hack2017.helpers.EventBus;
-import com.tenondelabs.hack2017.ui.gobernacion.EntidadEvent;
+import com.tenondelabs.hack2017.ui.entidad.EntidadEvent;
 
 import java.util.List;
 

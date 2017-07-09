@@ -1,5 +1,6 @@
 package com.tenondelabs.hack2017.data.remote;
 
+import com.tenondelabs.hack2017.data.model.Actividad;
 import com.tenondelabs.hack2017.data.model.Avance;
 import com.tenondelabs.hack2017.data.model.Entidad;
 import com.tenondelabs.hack2017.data.model.Gobernacion;
@@ -28,5 +29,9 @@ public interface TenondeService {
     //Resource empresa ciudades
     @GET("entidades")
     Call<List<Entidad>> getEntidades();
+
+    //Resource empresa ciudades
+    @GET("actividades")
+    Call<List<Actividad>> getActividades();
 
 }

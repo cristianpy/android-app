@@ -1,8 +1,8 @@
 package com.tenondelabs.hack2017.data.interactors.impl;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
-import com.tenondelabs.hack2017.data.repository.GobernacionRepository;
+import com.tenondelabs.hack2017.data.interactors.AvanceInteractor;
+import com.tenondelabs.hack2017.data.model.Avance;
+import com.tenondelabs.hack2017.data.repository.AvanceRepository;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class AvanceInteractorImpl implements AvanceInteractor {
 
     private AvanceRepository avanceRepository;
 
-    public AvanceInteractorImpl(avanceRepository avanceRepository) {
+    public AvanceInteractorImpl(AvanceRepository avanceRepository) {
         this.avanceRepository = avanceRepository;
     }
 
@@ -31,6 +31,6 @@ public class AvanceInteractorImpl implements AvanceInteractor {
 
     @Override
     public void saveAvances(List<Avance> avanceList) {
-        avanceRepository.saveAvancesStorage(avanceList);
+        avanceRepository.saveAvanceStorage(avanceList);
     }
 }

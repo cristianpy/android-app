@@ -7,7 +7,6 @@ import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
 import com.tenondelabs.hack2017.data.repository.ActividadRepository;
 import com.tenondelabs.hack2017.helpers.EventBus;
-import com.tenondelabs.hack2017.ui.gobernacion.ActividadEvent;
 
 import java.util.List;
 
@@ -36,20 +35,20 @@ public class ActividadRepositoryImpl implements ActividadRepository {
     public void getActividades() {
         Callback<List<Actividad>> listener = new Callback<List<Actividad>>() {
             @Override
-            public void success(List<Actividad> ciudadList) {
-                postEvent(ciudadList);
+            public void success(List<Actividad> actividadList) {
+//                postEvent(actividadList);
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
                 super.onFailure(call, t);
-                postEvent(t.getLocalizedMessage());
+//                postEvent(t.getLocalizedMessage());
             }
 
             @Override
             public void networkFailure(Throwable error) {
                 super.networkFailure(error);
-                postEvent(error.getLocalizedMessage());
+//                postEvent(error.getLocalizedMessage());
             }
         };
 
@@ -63,18 +62,18 @@ public class ActividadRepositoryImpl implements ActividadRepository {
                 .findAll();
         Log.d("CiudadRepository", "CIU CANT: " + gobernaciones.size());
         if (gobernaciones.isLoaded()) {
-            postEvent(gobernaciones);
+//            postEvent(gobernaciones);
         }
     }
 
     @Override
-    public void saveActividadesStorage(final List<Actividad> gobernacionList) {
+    public void saveActividadesStorage(final List<Actividad> actividadList) {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
 //                for (Actividad gobernacion : gobernacionList) {
 //                    gobernacion = realm.createObject(Actividad.class);
-                    realm.insert(gobernacionList);
+                    realm.insert(actividadList);
 //                }
             }
         }, new Realm.Transaction.OnSuccess() {
@@ -85,21 +84,21 @@ public class ActividadRepositoryImpl implements ActividadRepository {
         }, new Realm.Transaction.OnError() {
             @Override
             public void onError(Throwable error) {
-                postEvent(error.getLocalizedMessage());
+//                postEvent(error.getLocalizedMessage());
             }
         });
     }
 
-    private void postEvent(String error) {
-        ActividadEvent event = new ActividadEvent();
-        event.setError(error);
-        eventBus.post(event);
-    }
-
-    private void postEvent(List<Actividad> items) {
-        ActividadEvent event = new ActividadEvent();
-        event.setActividades(items);
-        eventBus.post(event);
-    }
+//    private void postEvent(String error) {
+//        ActividadEvent event = new ActividadEvent();
+//        event.setError(error);
+//        eventBus.post(event);
+//    }
+//
+//    private void postEvent(List<Actividad> items) {
+//        ActividadEvent event = new ActividadEvent();
+//        event.setActividades(items);
+//        eventBus.post(event);
+//    }
 
 }
