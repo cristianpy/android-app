@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //// Enabling multidex support
-        multiDexEnabled true
+//        multiDexEnabled true
     }
 
     buildTypes {
@@ -31,13 +31,18 @@ android {
             resValue("string", "GMAPS_API_KEY", project.property('GMAPS_API_KEY'))
         }
     }
+
+//    configurations {
+//        all*.exclude group: 'com.android.support', module: 'support-v4'
+//        all*.exclude group: 'com.android.support', module: 'support-annotations'
+//    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     wearApp project(':wear')
-    compile 'com.google.android.gms:play-services:9.8.0'
+//    compile 'com.google.android.gms:play-services:9.8.0'
 
     // Twitter APIs
     compile 'com.twitter.sdk.android:twitter:3.0.0'
@@ -62,7 +67,7 @@ dependencies {
 //    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
 //    compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
 //
-//    compile "com.google.android.gms:play-services-maps:$rootProject.ext.playServicesVersion"
+    compile "com.google.android.gms:play-services-maps:$rootProject.ext.playServicesVersion"
     //compile "com.google.android.gms:play-services-analytics:$rootProject.ext.playServicesVersion"
 
     //Dager2
