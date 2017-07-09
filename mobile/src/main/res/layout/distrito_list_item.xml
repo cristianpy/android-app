@@ -9,10 +9,10 @@
     app:cardUseCompatPadding="true"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    android:id="@+id/cardview_ciudad">
+    android:id="@+id/cardview_distrito">
 
     <!--<com.balysv.materialripple.MaterialRippleLayout-->
-        <!--android:id="@+id/ripple_view_ciudad"-->
+        <!--android:id="@+id/ripple_view_distrito"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
         <!--app:mrl_rippleColor="@color/colorAccent"-->
@@ -29,7 +29,7 @@
             <!--android:background="@color/blue"-->
 
             <!--<com.makeramen.roundedimageview.RoundedImageView-->
-                <!--android:id="@+id/img_ciudad"-->
+                <!--android:id="@+id/img_distrito"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_margin="10dp"-->
@@ -46,14 +46,13 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/img_ciudad"
+                    android:id="@+id/img_distrito"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:contentDescription="@string/app_name"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/ic_nbar_ciudad" />
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/img_today"
@@ -69,7 +68,7 @@
 
             </RelativeLayout>
 
-            <!--tools:src="@drawable/ic_ciudad"-->
+            <!--tools:src="@drawable/ic_distrito"-->
 
             <!--<ImageView-->
                 <!--android:id="@+id/img_empresa"-->
@@ -82,7 +81,7 @@
                 <!--android:layout_marginBottom="10dp"/>-->
 
             <TextView
-                android:id="@+id/txt_nombre_ciudad"
+                android:id="@+id/txt_nombre_distrito"
                 style="@style/font_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
