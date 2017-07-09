@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_akibusca"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/logo_akibusca_home"
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentTop="false"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/txt_titulo"
+            style="@style/title_font_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_akibusca"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/akibusca"/>
+        <TextView
+
+            android:id="@+id/txt_cargando"
+            style="@style/font_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/txt_titulo"
+            android:text="@string/cargando"/>
+
+        <ProgressBar
+            android:id="@+id/progress_indicator_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_below="@+id/txt_cargando"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+
+</ScrollView>
