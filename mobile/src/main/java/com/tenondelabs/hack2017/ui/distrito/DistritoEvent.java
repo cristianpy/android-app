@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.distrito;
 
 
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Distrito;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class DistritoEvent {
 
     private String error;
-    private List<Gobernacion> gobernaciones;
+    private List<Distrito> distritos;
 
     public String getError() {
         return error;
@@ -24,12 +24,12 @@ public class DistritoEvent {
         this.error = error;
     }
 
-    public List<Gobernacion> getGobernaciones() {
-        return gobernaciones;
+    public List<Distrito> getDistritos() {
+        return distritos;
     }
 
-    public void setGobernaciones(List<Gobernacion> gobernaciones) {
-        this.gobernaciones = gobernaciones;
+    public void setDistritos(List<Distrito> distritos) {
+        this.distritos = distritos;
     }
 
 }

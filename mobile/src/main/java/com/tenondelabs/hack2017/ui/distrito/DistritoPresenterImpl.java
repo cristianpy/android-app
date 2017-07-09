@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.distrito;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.interactors.DistritoInteractor;
+import com.tenondelabs.hack2017.data.model.Distritos;
 import com.tenondelabs.hack2017.helpers.EventBus;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class DistritoPresenterImpl implements DistritoPresenter {
 
-    private DistritoView gobernacionView;
-    private GobernacionInteractor gobernacionInteractor;
+    private DistritoView distritoView;
+    private DistritosInteractor distritoInteractor;
     private EventBus eventBus;
 
-    public DistritoPresenterImpl(DistritoView gobernacionView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        this.gobernacionView = gobernacionView;
-        this.gobernacionInteractor = gobernacionInteractor;
+    public DistritoPresenterImpl(DistritoView distritoView, DistritosInteractor distritoInteractor, EventBus eventBus) {
+        this.distritoView = distritoView;
+        this.distritoInteractor = distritoInteractor;
         this.eventBus = eventBus;
     }
 
@@ -38,40 +38,40 @@ public class DistritoPresenterImpl implements DistritoPresenter {
 
     @Override
     public void onDestroy() {
-        this.gobernacionView = null;
+        this.distritoView = null;
     }
 
     @Override
-    public void getGobernaciones() {
-        if (this.gobernacionView != null) {
-            gobernacionView.showProgress();
+    public void getDistritos() {
+        if (this.distritoView != null) {
+            distritoView.showProgress();
         }
 
-        this.gobernacionInteractor.getGobernacionList();
+        this.distritoInteractor.getDistritosList();
     }
 
     @Override
-    public void loadGobernaciones() {
-        if (this.gobernacionView != null) {
-            gobernacionView.showProgress();
+    public void loadDistritos() {
+        if (this.distritoView != null) {
+            distritoView.showProgress();
         }
 
-        this.gobernacionInteractor.loadGobernacionesFromStorage();
+        this.distritoInteractor.loadDistritosFromStorage();
     }
 
     @Override
     @Subscribe
-    public void onEventMainThread(DistritoEvent ciudadEvent) {
-        String errorMsg = ciudadEvent.getError();
-        if (this.gobernacionView != null) {
-            this.gobernacionView.hideProgress();
+    public void onEventMainThread(DistritoEvent distritoEvent) {
+        String errorMsg = distritoEvent.getError();
+        if (this.distritoView != null) {
+            this.distritoView.hideProgress();
 
             if (errorMsg != null) {
-                gobernacionView.onEntityError(errorMsg);
+                distritoView.onEntityError(errorMsg);
             } else {
-                List<Gobernacion> items = ciudadEvent.getGobernaciones();
+                List<Distritos> items = distritoEvent.getDistritos();
                 if (items != null && !items.isEmpty()) {
-                    gobernacionView.setGobernaciones(items);
+                    distritoView.setDistritos(items);
                 }
             }
         }

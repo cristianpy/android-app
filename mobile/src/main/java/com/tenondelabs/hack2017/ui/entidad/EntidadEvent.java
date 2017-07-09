@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.entidad;
 
 
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Entidad;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class EntidadEvent {
 
     private String error;
-    private List<Gobernacion> gobernaciones;
+    private List<Entidad> entidades;
 
     public String getError() {
         return error;
@@ -24,12 +24,12 @@ public class EntidadEvent {
         this.error = error;
     }
 
-    public List<Gobernacion> getGobernaciones() {
-        return gobernaciones;
+    public List<Entidad> getEntidades() {
+        return entidades;
     }
 
-    public void setGobernaciones(List<Gobernacion> gobernaciones) {
-        this.gobernaciones = gobernaciones;
+    public void setEntidades(List<Entidad> entidades) {
+        this.entidades = entidades;
     }
 
 }

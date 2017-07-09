@@ -13,7 +13,7 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Distrito;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 import java.util.List;
@@ -34,43 +34,43 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 
 	private static final String TAG = DistritoListFragment.class.getSimpleName();
 
-	@Bind(R.id.container_gobernacion) FrameLayout container;
-	@Bind(R.id.gridview_gobernacion) GridView mGridViewGobernacion;
-	@Bind(R.id.swipe_layout_gobernacion) SwipeRefreshLayout mSwipeRefreshLayout;
-	@Bind(R.id.progress_indicator_gobernacion) ProgressBar mProgressBar;
+	@Bind(R.id.container_distrito) FrameLayout container;
+	@Bind(R.id.gridview_distrito) GridView mGridViewDistrito;
+	@Bind(R.id.swipe_layout_distrito) SwipeRefreshLayout mSwipeRefreshLayout;
+	@Bind(R.id.progress_indicator_distrito) ProgressBar mProgressBar;
 
 	@Inject
 	DistritoAdapter adapter;
 	@Inject
-	DistritoPresenter ciudadPresenter;
+	DistritoPresenter distritoPresenter;
 //	@Inject Realm realm;
 
-	private static DistritoListFragment gobernacionListFragment;
+	private static DistritoListFragment distritoListFragment;
 	private String action;
 
 	public DistritoListFragment() { }
 
 	public static DistritoListFragment getInstance() {
-		if (gobernacionListFragment == null) {
-			gobernacionListFragment = new DistritoListFragment();
+		if (distritoListFragment == null) {
+			distritoListFragment = new DistritoListFragment();
 		}
 
-		return gobernacionListFragment;
+		return distritoListFragment;
 	}
 
 	public static DistritoListFragment newInstance(String action) {
-		DistritoListFragment ciudadListFragment = new DistritoListFragment();
-		ciudadListFragment.setAction(action);
+		DistritoListFragment distritoListFragment = new DistritoListFragment();
+		distritoListFragment.setAction(action);
 
-		return ciudadListFragment;
+		return distritoListFragment;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_gobernacion, container, false);
+		View view = inflater.inflate(R.layout.fragment_distrito, container, false);
 		ButterKnife.bind(this, view);
 
-		mGridViewGobernacion.setOnItemClickListener(this);
+		mGridViewDistrito.setOnItemClickListener(this);
 		mSwipeRefreshLayout.setOnRefreshListener(this);
 
 		mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -86,29 +86,29 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 	@Override
 	public void onResume() {
 		super.onResume();
-		ciudadPresenter.onResume();
-		ciudadPresenter.getGobernaciones();
-//		loadGobernaciones();
+		distritoPresenter.onResume();
+		distritoPresenter.getDistritos();
+//		loadDistritos();
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		ciudadPresenter.onPause();
+		distritoPresenter.onPause();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ciudadPresenter.onDestroy();
+		distritoPresenter.onDestroy();
 //		realm.close();
 	}
 
 	@Override
 	public void onRefresh() {
-		adapter.clearGobernaciones();
-		ciudadPresenter.getGobernaciones();
-//        loadGobernaciones();
+		adapter.clearDistritos();
+		distritoPresenter.getDistritos();
+//        loadDistritos();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);
@@ -142,8 +142,8 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 	}
 
 	@Override
-	public void setGobernaciones(List<Gobernacion> gobernacionList) {
-		adapter.addGobernaciones(gobernacionList);
+	public void setDistritos(List<Distrito> distritoList) {
+		adapter.addDistritos(distritoList);
 	}
 
 	//Helper Methods
@@ -152,7 +152,7 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 //				.builder()
 //				.mainModule(new MainModule(getContext()))
 //				.libsModule(new LibsModule(this))
-//				.ciudadModule(new CiudadModule(this))
+//				.distritoModule(new CiudadModule(this))
 //				.build()
 //				.inject(this);
 	}
@@ -161,17 +161,17 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 //		if (getAction() != null) {
 //			adapter.setAction(getAction());
 //		}
-		mGridViewGobernacion.setAdapter(adapter);
+		mGridViewDistrito.setAdapter(adapter);
 	}
 
-//	private void loadGobernaciones() {
-//		RealmResults<Gobernacion> results = realm.where(Gobernacion.class).findAll();
+//	private void loadDistritos() {
+//		RealmResults<Distrito> results = realm.where(Distrito.class).findAll();
 //
 //		hideProgress();
 //
 //		if (!results.isEmpty()) {
-//			adapter.clearGobernaciones();
-//			adapter.addGobernaciones(results);
+//			adapter.clearDistritos();
+//			adapter.addDistritos(results);
 //		} else {
 //			Snackbar.make(container, "No es posible cargar Cuidades", Snackbar.LENGTH_LONG).show();
 //		}
@@ -182,15 +182,15 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 	}
 
 	private void openCategoriaActivity(int position) {
-		long ciudadId = adapter.getItemId(position);
+		long distritoId = adapter.getItemId(position);
 
 //		Intent intent = new Intent(getActivity(), CategoriaActivity.class);
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
+//		intent.putExtra(Util.CODIGO_CIUDAD, distritoId);
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
 	private void openActionActivity(int position, String action) {
-		long ciudadId = adapter.getItemId(position);
+		long distritoId = adapter.getItemId(position);
 		Intent intent;
 
 //		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0) {
@@ -201,7 +201,7 @@ public class DistritoListFragment extends BaseFragment implements DistritoView,
 //			intent = new Intent(getActivity(), CategoriaActivity.class);
 //		}
 //
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
+//		intent.putExtra(Util.CODIGO_CIUDAD, distritoId);
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
