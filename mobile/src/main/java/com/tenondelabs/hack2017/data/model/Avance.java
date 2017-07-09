@@ -5,7 +5,7 @@ import java.util.Date;
 import io.realm.RealmObject;
 
 /**
- * Created by rorogarcete on 08/07/17.
+ * Created by tenondelabs on 08/07/17.
  */
 
 public class Avance extends RealmObject {

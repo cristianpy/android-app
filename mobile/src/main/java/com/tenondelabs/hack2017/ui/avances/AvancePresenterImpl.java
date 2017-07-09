@@ -9,10 +9,10 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.List;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
  * Clase que implementa las acciones de las pantallas UI
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class AvancePresenterImpl implements AvancePresenter {
 

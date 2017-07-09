@@ -29,10 +29,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 0.1
  * Clase que representa un Fragment de una Pantalla
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class GobernacionListFragment extends BaseFragment implements GobernacionView,
 		SwipeRefreshLayout.OnRefreshListener, AdapterView.OnItemClickListener {
