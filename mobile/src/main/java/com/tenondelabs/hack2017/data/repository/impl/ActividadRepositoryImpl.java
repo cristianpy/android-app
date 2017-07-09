@@ -1,7 +1,5 @@
 package com.tenondelabs.hack2017.data.repository.impl;
 
-import android.util.Log;
-
 import com.tenondelabs.hack2017.data.model.Actividad;
 import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
@@ -52,16 +50,15 @@ public class ActividadRepositoryImpl implements ActividadRepository {
             }
         };
 
-        client.getService().getActividades().enqueue(listener);
+//        client.getService().getActividades().enqueue(listener);
     }
 
     @Override
     public void getActividadesFromStorage() {
 //        realm.executeTransactionAsync()
-        RealmResults<Actividad> gobernaciones = realm.where(Actividad.class)
+        RealmResults<Actividad> actividades = realm.where(Actividad.class)
                 .findAll();
-        Log.d("CiudadRepository", "CIU CANT: " + gobernaciones.size());
-        if (gobernaciones.isLoaded()) {
+        if (actividades.isLoaded()) {
 //            postEvent(gobernaciones);
         }
     }

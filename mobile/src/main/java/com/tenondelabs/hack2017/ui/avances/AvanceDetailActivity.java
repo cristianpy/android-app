@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  * @author Rodrigo Garcete
  * @version 1.0
- * Copyright 2017 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class AvanceDetailActivity extends BaseActivity
         implements OnMapReadyCallback {
@@ -35,7 +35,7 @@ public class AvanceDetailActivity extends BaseActivity
 
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.container_empresa_detail) LinearLayout mContainer;
-    @Bind(R.id.fragment_empresa_images) FrameLayout mFrameImage;
+    @Bind(R.id.fragment_avance_images) FrameLayout mFrameImage;
 
     private static String AVANCE_NOMBRE;
     private static String AVANCE_DIRECCION;
