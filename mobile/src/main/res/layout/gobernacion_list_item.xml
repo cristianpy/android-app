@@ -52,8 +52,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:contentDescription="@string/app_name"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/ic_nbar_ciudad" />
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/img_today"
@@ -63,9 +62,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/rounded_corner"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_checked_white" />
+                    android:visibility="gone" />
 
             </RelativeLayout>
 

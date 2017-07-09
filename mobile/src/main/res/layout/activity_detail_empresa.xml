@@ -51,7 +51,6 @@
                 android:gravity="center"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                android:text="@string/text_title_servicios"
                 android:textColor="@color/white" />
 
             <View
@@ -80,8 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp" />
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:id="@+id/txt_servicio_empresa"
@@ -117,8 +115,7 @@
                     android:id="@+id/img_horario_empresa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_event_grey600_24dp" />
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:id="@+id/txt_horario_empresa"
@@ -144,8 +141,7 @@
                     android:id="@+id/img_email_empresa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/email" />
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:id="@+id/txt_email_empresa"
@@ -171,8 +167,7 @@
                     android:id="@+id/img_web_empresa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_business_grey600_24dp" />
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:id="@+id/txt_web_empresa"
@@ -200,8 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_phone_grey600_24dp" />
+                    android:contentDescription="@string/app_name" />
 
                 <!--<LinearLayout-->
                 <!--android:id="@+id/container_contacts"-->
@@ -218,7 +212,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/selector_button_call"
                     android:paddingBottom="10dp"
                     android:paddingEnd="10dp"
                     android:paddingLeft="10dp"
@@ -241,7 +234,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/selector_button_call"
                     android:paddingBottom="10dp"
                     android:paddingEnd="10dp"
                     android:paddingLeft="10dp"
@@ -259,6 +251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -270,8 +263,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:src="@drawable/ic_facebook1x" />
+                    android:padding="20dp"/>
 
                 <ImageView
                     android:id="@+id/img_twitter_empresa"
@@ -280,8 +272,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:src="@drawable/ic_twitter1x" />
+                    android:padding="20dp" />
 
                 <ImageView
                     android:id="@+id/img_whatsapp_empresa"
@@ -290,8 +281,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:src="@drawable/ic_whatsapp1x" />
+                    android:padding="20dp" />
 
             </LinearLayout>
 

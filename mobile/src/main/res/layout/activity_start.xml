@@ -15,7 +15,6 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/logo_akibusca_home"
             android:contentDescription="@string/app_name"
             android:layout_alignParentTop="false"
             android:layout_centerInParent="true" />
@@ -27,8 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_akibusca"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:text="@string/akibusca"/>
+            android:layout_marginBottom="10dp"/>
         <TextView
 
             android:id="@+id/txt_cargando"
