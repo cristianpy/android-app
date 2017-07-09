@@ -43,7 +43,7 @@ public interface TenondeService {
     Call<List<Gobernacion>> getGobernaciones();
 
     //Resource entidades
-    @GET("sql?q=SELECT DISTINCT ins_id, sigla FROM public.avance limit 25")
+    @GET("sql?q=SELECT DISTINCT ins_id, sigla FROM public.avance")
     Call<List<Entidad>> getEntidades();
 
 }

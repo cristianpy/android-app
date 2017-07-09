@@ -1,5 +1,7 @@
 package com.tenondelabs.hack2017.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -11,20 +13,32 @@ import io.realm.RealmObject;
 public class Avance extends RealmObject {
 
     private Long id;
+    @SerializedName("avanceid")
     private Long avanceId;
     private String justificacion;
     private String cantidad;
+    @SerializedName("fechaavance")
     private Date fechaAvance;
+    @SerializedName("fechainicio")
     private Date fechaInicio;
+    @SerializedName("fechafin")
     private Date fechaFin;
+    @SerializedName("entidadid")
     private Long entidadId;
+    @SerializedName("entidadsigla")
     private String entidadSigla;
+    @SerializedName("actividadid")
     private Long actividadId;
+    @SerializedName("actividadnombre")
     private String activadaNombre;
     private int periodo;
+    @SerializedName("departamentoid")
     private Long departamentoId;
+    @SerializedName("departamentonombre")
     private String departamentoNombre;
+    @SerializedName("distritoid")
     private Long distritoId;
+    @SerializedName("distritonombre")
     private String distritoNombre;
 
     public Avance() { }

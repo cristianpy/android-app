@@ -120,7 +120,6 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 	public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 		if (hasAdapter() ) {
 			openAvanceActivity(position);
-
 		}
 	}
 
@@ -164,7 +163,7 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 	}
 
 	private void openAvanceActivity(int position) {
-		long departamentoId = adapter.getItemId(position);
+		String departamentoId = adapter.getItem(position).getDpto();
 
 		Intent intent = new Intent(getActivity(), AvanceActivity.class);
 		intent.putExtra(Util.CODIGO_AVANCE, departamentoId);

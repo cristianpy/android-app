@@ -21,7 +21,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 
-
+/**
+ * @author Rodrigo Garcete
+ * @version 1.0
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
+ */
 public class AvanceSliderImagesFragment extends BaseFragment implements BaseSliderView.OnSliderClickListener{
 
 	private static final String TAG = AvanceSliderImagesFragment.class.getSimpleName();

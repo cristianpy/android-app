@@ -82,7 +82,7 @@ public class EntidadAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Entidad getItem(int position) {
 		return mEntidades.get(position);
 	}
 

@@ -28,6 +28,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.main.StartActivity"/>
+        <activity android:name=".ui.avances.AvanceActivity"/>
+        <activity android:name=".ui.avances.AvanceDetailActivity"/>
+        <activity android:name=".ui.images.FullScreenImageActivity"/>
+
     </application>
 
 </manifest>
