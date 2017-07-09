@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.avances;
 
 
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Avance;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class AvanceEvent {
 
     private String error;
-    private List<Gobernacion> gobernaciones;
+    private List<Avance> avances;
 
     public String getError() {
         return error;
@@ -24,12 +24,12 @@ public class AvanceEvent {
         this.error = error;
     }
 
-    public List<Gobernacion> getGobernaciones() {
-        return gobernaciones;
+    public List<Avance> getAvances() {
+        return avances;
     }
 
-    public void setGobernaciones(List<Gobernacion> gobernaciones) {
-        this.gobernaciones = gobernaciones;
+    public void setAvances(List<Avance> avanceList) {
+        this.avances = avanceList;
     }
 
 }

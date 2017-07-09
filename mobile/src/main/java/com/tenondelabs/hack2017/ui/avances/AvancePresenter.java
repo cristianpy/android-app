@@ -9,7 +9,7 @@ import com.tenondelabs.hack2017.ui.base.Presenter;
  * Copyright 2016 Akibusca Inc. All rights reserved
  */
 public interface AvancePresenter extends Presenter {
-    void getGobernaciones();
-    void loadGobernaciones();
-    void onEventMainThread(AvanceEvent gobernacionEvent);
+    void getAvances();
+    void loadAvances();
+    void onEventMainThread(AvanceEvent avanceEvent);
 }

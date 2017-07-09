@@ -8,9 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.tenondelabs.hack2017.R;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Avance;
 import com.tenondelabs.hack2017.ui.util.RobotoFontUtil;
 
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-;
 
 /**
  * @author Rodrigo Garcete
@@ -31,35 +29,35 @@ public class AvanceAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private LayoutInflater mInflater;
-	private ArrayList<Gobernacion> mGobernaciones;
+	private ArrayList<Avance> mAvances;
 //	private String action;
 //	private Realm realm;
 
 	public AvanceAdapter(Context context) {
 		this.mContext = context;
-		this.mGobernaciones = new ArrayList<>();
+		this.mAvances = new ArrayList<>();
 
 		if (mContext != null) {
 			mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 	}
 
-	public void addGobernaciones(List<Gobernacion> gobernaciones){
-		mGobernaciones.addAll(gobernaciones);
+	public void addAvances(List<Avance> avanceList){
+		mAvances.addAll(avanceList);
 		notifyDataSetChanged();
 	}
 
 	public void clearGobernaciones(){
-		mGobernaciones.clear();
+		mAvances.clear();
 		notifyDataSetChanged();
 	}
 
-	public List<Gobernacion> getGobernaciones(){
-		return mGobernaciones;
+	public List<Avance> getAvances(){
+		return mAvances;
 	}
 
-	public Gobernacion getGobernacion(int position) {
-		return mGobernaciones.get(position);
+	public Avance getAvance(int position) {
+		return mAvances.get(position);
 	}
 
 //	public void setAction(String accion) {
@@ -68,8 +66,8 @@ public class AvanceAdapter extends BaseAdapter {
 
 	//Patron ViewHolder
 	public class ViewHolderCiudad {
-		@Bind(R.id.img_ciudad) ImageView mImgCiudad;
-		@Bind(R.id.txt_nombre_ciudad) TextView mTxtNombreCiudad;
+		@Bind(R.id.img_avance) ImageView mImgAvance;
+		@Bind(R.id.txt_justification) TextView mTxtJustificacion;
 		@Bind(R.id.img_today) ImageView mImgToday;
 
 		public ViewHolderCiudad(View view){
@@ -80,20 +78,20 @@ public class AvanceAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return mGobernaciones == null ? 0 : mGobernaciones.size();
+		return mAvances == null ? 0 : mAvances.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mGobernaciones.get(position);
+		return mAvances.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		if (mGobernaciones.get(position) == null) {
+		if (mAvances.get(position) == null) {
 			return -1;
 		}
-		return mGobernaciones.get(position).getId();
+		return mAvances.get(position).getId();
 	}
 
 	@Override
@@ -101,25 +99,25 @@ public class AvanceAdapter extends BaseAdapter {
 		ViewHolderCiudad viewHolder;
 
 		if (view == null) {
-			view = mInflater.inflate(R.layout.gobernacion_list_item, viewGroup, false) ;
+			view = mInflater.inflate(R.layout.avance_list_item, viewGroup, false) ;
 			viewHolder = new ViewHolderCiudad(view);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolderCiudad) view.getTag();
 		}
 
-		Picasso.with(mContext)
-				.load(mGobernaciones.get(position).getImagen())
-				.fit()
+//		Picasso.with(mContext)
+//				.load(mAvances.get(position).getImagen())
+//				.fit()
 //				.placeholder(R.drawable.ic_carrete_eventos_table)
 //				.error(R.drawable.ic_pin_drop_white_24dp)
-				.into(viewHolder.mImgCiudad);
+//				.into(viewHolder.mImgAvance);
 
-		viewHolder.mTxtNombreCiudad.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
-		viewHolder.mTxtNombreCiudad.setText(mGobernaciones.get(position).getNombre());
+		viewHolder.mTxtJustificacion.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
+		viewHolder.mTxtJustificacion.setText(mAvances.get(position).getJustificacion());
 
 //		if (action!=null){
-//			checkFavorites(mGobernaciones.get(position).getId(),viewHolder);
+//			checkFavorites(mAvances.get(position).getId(),viewHolder);
 //		}
 
 		return view;

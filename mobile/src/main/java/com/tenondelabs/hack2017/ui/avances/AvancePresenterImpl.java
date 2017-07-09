@@ -1,7 +1,7 @@
 package com.tenondelabs.hack2017.ui.avances;
 
-import com.tenondelabs.hack2017.data.interactors.GobernacionInteractor;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.interactors.AvanceInteractor;
+import com.tenondelabs.hack2017.data.model.Avance;
 import com.tenondelabs.hack2017.helpers.EventBus;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class AvancePresenterImpl implements AvancePresenter {
 
-    private AvanceView gobernacionView;
-    private GobernacionInteractor gobernacionInteractor;
+    private AvanceView avanceView;
+    private AvanceInteractor avanceInteractor;
     private EventBus eventBus;
 
-    public AvancePresenterImpl(AvanceView gobernacionView, GobernacionInteractor gobernacionInteractor, EventBus eventBus) {
-        this.gobernacionView = gobernacionView;
-        this.gobernacionInteractor = gobernacionInteractor;
+    public AvancePresenterImpl(AvanceView avanceView, AvanceInteractor avanceInteractor, EventBus eventBus) {
+        this.avanceView = avanceView;
+        this.avanceInteractor = avanceInteractor;
         this.eventBus = eventBus;
     }
 
@@ -38,40 +38,40 @@ public class AvancePresenterImpl implements AvancePresenter {
 
     @Override
     public void onDestroy() {
-        this.gobernacionView = null;
+        this.avanceView = null;
     }
 
     @Override
-    public void getGobernaciones() {
-        if (this.gobernacionView != null) {
-            gobernacionView.showProgress();
+    public void getAvances() {
+        if (this.avanceView != null) {
+            avanceView.showProgress();
         }
 
-        this.gobernacionInteractor.getGobernacionList();
+        this.avanceInteractor.getAvanceList();
     }
 
     @Override
-    public void loadGobernaciones() {
-        if (this.gobernacionView != null) {
-            gobernacionView.showProgress();
+    public void loadAvances() {
+        if (this.avanceView != null) {
+            avanceView.showProgress();
         }
 
-        this.gobernacionInteractor.loadGobernacionesFromStorage();
+        this.avanceInteractor.loadAvancesFromStorage();
     }
 
     @Override
     @Subscribe
-    public void onEventMainThread(AvanceEvent ciudadEvent) {
-        String errorMsg = ciudadEvent.getError();
-        if (this.gobernacionView != null) {
-            this.gobernacionView.hideProgress();
+    public void onEventMainThread(AvanceEvent avanceEvent) {
+        String errorMsg = avanceEvent.getError();
+        if (this.avanceView != null) {
+            this.avanceView.hideProgress();
 
             if (errorMsg != null) {
-                gobernacionView.onEntityError(errorMsg);
+                avanceView.onEntityError(errorMsg);
             } else {
-                List<Gobernacion> items = ciudadEvent.getGobernaciones();
+                List<Avance> items = avanceEvent.getAvances();
                 if (items != null && !items.isEmpty()) {
-                    gobernacionView.setGobernaciones(items);
+                    avanceView.setAvances(items);
                 }
             }
         }

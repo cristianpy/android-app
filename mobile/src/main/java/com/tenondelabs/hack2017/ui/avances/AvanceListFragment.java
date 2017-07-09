@@ -13,7 +13,7 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 
 import com.tenondelabs.hack2017.R;
-import com.tenondelabs.hack2017.data.model.Gobernacion;
+import com.tenondelabs.hack2017.data.model.Avance;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
 
 import java.util.List;
@@ -34,19 +34,15 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 
 	private static final String TAG = AvanceListFragment.class.getSimpleName();
 
-	@Bind(R.id.container_gobernacion) FrameLayout container;
-	@Bind(R.id.gridview_gobernacion) GridView mGridViewGobernacion;
-	@Bind(R.id.swipe_layout_gobernacion) SwipeRefreshLayout mSwipeRefreshLayout;
-	@Bind(R.id.progress_indicator_gobernacion) ProgressBar mProgressBar;
+	@Bind(R.id.container_avances) FrameLayout container;
+	@Bind(R.id.gridview_avances) GridView mGridViewAvances;
+	@Bind(R.id.swipe_layout_avances) SwipeRefreshLayout mSwipeRefreshLayout;
+	@Bind(R.id.progress_indicator_avances) ProgressBar mProgressBar;
 
-	@Inject
-	AvanceAdapter adapter;
-	@Inject
-	AvancePresenter ciudadPresenter;
-//	@Inject Realm realm;
+	@Inject AvanceAdapter adapter;
+	@Inject AvancePresenter ciudadPresenter;
 
 	private static AvanceListFragment gobernacionListFragment;
-	private String action;
 
 	public AvanceListFragment() { }
 
@@ -59,18 +55,17 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	}
 
 	public static AvanceListFragment newInstance(String action) {
-		AvanceListFragment ciudadListFragment = new AvanceListFragment();
-		ciudadListFragment.setAction(action);
+		AvanceListFragment avanceListFragment = new AvanceListFragment();
 
-		return ciudadListFragment;
+		return avanceListFragment;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_gobernacion, container, false);
+		View view = inflater.inflate(R.layout.fragment_avance, container, false);
 		ButterKnife.bind(this, view);
 
-		mGridViewGobernacion.setOnItemClickListener(this);
+		mGridViewAvances.setOnItemClickListener(this);
 		mSwipeRefreshLayout.setOnRefreshListener(this);
 
 		mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -87,7 +82,7 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	public void onResume() {
 		super.onResume();
 		ciudadPresenter.onResume();
-		ciudadPresenter.getGobernaciones();
+		ciudadPresenter.getAvances();
 //		loadGobernaciones();
 	}
 
@@ -107,7 +102,7 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	@Override
 	public void onRefresh() {
 		adapter.clearGobernaciones();
-		ciudadPresenter.getGobernaciones();
+		ciudadPresenter.getAvances();
 //        loadGobernaciones();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
@@ -118,11 +113,7 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 		if ( hasAdapter() ) {
-			if (getAction() != null) {
-				openActionActivity(position, getAction());
-			} else {
-				openCategoriaActivity(position);
-			}
+			openCategoriaActivity(position);
 		}
 	}
 
@@ -142,8 +133,8 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	}
 
 	@Override
-	public void setGobernaciones(List<Gobernacion> gobernacionList) {
-		adapter.addGobernaciones(gobernacionList);
+	public void setAvances(List<Avance> avanceList) {
+		adapter.addAvances(avanceList);
 	}
 
 	//Helper Methods
@@ -161,7 +152,7 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 //		if (getAction() != null) {
 //			adapter.setAction(getAction());
 //		}
-		mGridViewGobernacion.setAdapter(adapter);
+		mGridViewAvances.setAdapter(adapter);
 	}
 
 //	private void loadGobernaciones() {
@@ -205,11 +196,4 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 //		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
-	}
 }
