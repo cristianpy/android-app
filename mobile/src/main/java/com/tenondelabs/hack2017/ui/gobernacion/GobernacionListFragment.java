@@ -18,7 +18,10 @@ import com.tenondelabs.hack2017.di.components.DaggerGobernacionComponent;
 import com.tenondelabs.hack2017.di.modules.GobernacionModule;
 import com.tenondelabs.hack2017.di.modules.LibsModule;
 import com.tenondelabs.hack2017.di.modules.MainModule;
+import com.tenondelabs.hack2017.ui.avances.AvanceActivity;
+import com.tenondelabs.hack2017.ui.base.BaseActivity;
 import com.tenondelabs.hack2017.ui.base.BaseFragment;
+import com.tenondelabs.hack2017.ui.util.Util;
 
 
 import java.util.List;
@@ -46,7 +49,6 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 
 	@Inject GobernacionAdapter adapter;
 	@Inject GobernacionPresenter ciudadPresenter;
-//	@Inject Realm realm;
 
 	private static GobernacionListFragment gobernacionListFragment;
 	private String action;
@@ -81,7 +83,6 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 
 		setupInjection();
 		setupGridView();
-		//loadCiudades(); **Moved to onResume to refresh on back to activity**
 
 		return view;
 	}
@@ -91,7 +92,6 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 		super.onResume();
 		ciudadPresenter.onResume();
 		ciudadPresenter.getGobernaciones();
-//		loadGobernaciones();
 	}
 
 	@Override
@@ -104,14 +104,12 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 	public void onDestroy() {
 		super.onDestroy();
 		ciudadPresenter.onDestroy();
-//		realm.close();
 	}
 
 	@Override
 	public void onRefresh() {
 		adapter.clearGobernaciones();
 		ciudadPresenter.getGobernaciones();
-//        loadGobernaciones();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);
@@ -120,12 +118,9 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 
 	@Override
 	public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-		if ( hasAdapter() ) {
-			if (getAction() != null) {
-				openActionActivity(position, getAction());
-			} else {
-				openCategoriaActivity(position);
-			}
+		if (hasAdapter() ) {
+			openAvanceActivity(position);
+
 		}
 	}
 
@@ -161,51 +156,19 @@ public class GobernacionListFragment extends BaseFragment implements Gobernacion
 	}
 
 	private void setupGridView() {
-//		if (getAction() != null) {
-//			adapter.setAction(getAction());
-//		}
 		mGridViewGobernacion.setAdapter(adapter);
 	}
-
-//	private void loadGobernaciones() {
-//		RealmResults<Gobernacion> results = realm.where(Gobernacion.class).findAll();
-//
-//		hideProgress();
-//
-//		if (!results.isEmpty()) {
-//			adapter.clearGobernaciones();
-//			adapter.addGobernaciones(results);
-//		} else {
-//			Snackbar.make(container, "No es posible cargar Cuidades", Snackbar.LENGTH_LONG).show();
-//		}
-//	}
 
 	private boolean hasAdapter() {
 		return (adapter != null);
 	}
 
-	private void openCategoriaActivity(int position) {
-		long ciudadId = adapter.getItemId(position);
+	private void openAvanceActivity(int position) {
+		long departamentoId = adapter.getItemId(position);
 
-//		Intent intent = new Intent(getActivity(), CategoriaActivity.class);
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
-//		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
-	}
-
-	private void openActionActivity(int position, String action) {
-		long ciudadId = adapter.getItemId(position);
-		Intent intent;
-
-//		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0) {
-//			intent = new Intent(getActivity(), EventoActivity.class);
-//		} else if (action.compareTo(Util.PROMO_BY_CIUDAD) == 0) {
-//			intent = new Intent(getActivity(), PromocionActivity.class);
-//		} else {
-//			intent = new Intent(getActivity(), CategoriaActivity.class);
-//		}
-//
-//		intent.putExtra(Util.CODIGO_CIUDAD, ciudadId);
-//		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
+		Intent intent = new Intent(getActivity(), AvanceActivity.class);
+		intent.putExtra(Util.CODIGO_AVANCE, departamentoId);
+		startActivity(intent, BaseActivity.ActivityAnimation.SLIDE_LEFT);
 	}
 
 	public String getAction() {
