@@ -18,9 +18,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Logger;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 0.0.1
- * Copyright 2016 Akibusca Inc. All rights reserved
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public final class OkClientFactory {
 

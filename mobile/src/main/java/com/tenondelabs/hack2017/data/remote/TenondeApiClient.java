@@ -11,10 +11,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
- * Clase que representa la configuracion de la API
- * Copyright 2016 akibusca Inc. All rights reserved
+ * Interfaz que representa la llamadas a los recursos del API
+ * Copyright 2017 TenondeLabs Inc. All rights reserved
  */
 public class TenondeApiClient {
 

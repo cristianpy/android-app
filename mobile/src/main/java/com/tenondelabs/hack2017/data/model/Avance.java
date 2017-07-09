@@ -5,18 +5,19 @@ import java.util.Date;
 import io.realm.RealmObject;
 
 /**
- * Created by rorogarcete on 08/07/17.
+ * Created by tenondelabs on 08/07/17.
  */
 
 public class Avance extends RealmObject {
 
     private Long id;
+    private Long avanceId
     private String justificacion;
     private String cantidad;
     private Date fechaAvance;
     private Date fechaInicio;
     private Date fechaFin;
-    private Long entidadIc;
+    private Long entidadId;
     private String entidadSigla;
     private Long actividadId;
     private String activadaNombre;
@@ -34,6 +35,14 @@ public class Avance extends RealmObject {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getAvanceId() {
+        return avanceId;
+    }
+
+    public void setAvanceId(Long avanceId) {
+        this.avanceId = avanceId;
     }
 
     public String getJustificacion() {

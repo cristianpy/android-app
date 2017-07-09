@@ -6,10 +6,10 @@ import com.tenondelabs.hack2017.data.model.Gobernacion;
 import java.util.List;
 
 /**
- * @author Rodrigo Garcete
+ * @author TenondeLabs
  * @version 1.0
  * Class target for event
- * Copyright 2016 Akibusca. All rights reserved
+ * Copyright 2017 TenondeLabs. All rights reserved
  */
 public class GobernacionEvent {
 
