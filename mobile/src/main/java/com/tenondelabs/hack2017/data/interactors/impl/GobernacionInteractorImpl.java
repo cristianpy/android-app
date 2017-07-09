@@ -21,16 +21,16 @@ public class GobernacionInteractorImpl implements GobernacionInteractor {
 
     @Override
     public void getGobernacionList() {
-        gobernacionRepository.getCiudades();
+        gobernacionRepository.getGobernaciones();
     }
 
     @Override
     public void loadGobernacionesFromStorage() {
-        gobernacionRepository.getCiudadesFromStorage();
+        gobernacionRepository.getGobernacionesFromStorage();
     }
 
     @Override
     public void saveGobernaciones(List<Gobernacion> gobernacionList) {
-        gobernacionRepository.saveCiudadesStorage(gobernacionList);
+        gobernacionRepository.saveGobernacionesStorage(gobernacionList);
     }
 }

@@ -65,7 +65,6 @@ public class GobernacionRepositoryImpl implements GobernacionRepository {
         if (gobernaciones.isLoaded()) {
             postEvent(gobernaciones);
         }
-
     }
 
     @Override
@@ -73,9 +72,10 @@ public class GobernacionRepositoryImpl implements GobernacionRepository {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                for (Gobernacion gobernacion : gobernacionList) {
-                    gobernacion = realm.createObject(Gobernacion.class);
-                }
+//                for (Gobernacion gobernacion : gobernacionList) {
+//                    gobernacion = realm.createObject(Gobernacion.class);
+                    realm.insert(gobernacionList);
+//                }
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override
