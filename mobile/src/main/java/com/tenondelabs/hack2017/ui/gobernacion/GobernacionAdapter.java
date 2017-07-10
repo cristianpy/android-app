@@ -30,8 +30,6 @@ public class GobernacionAdapter extends BaseAdapter {
 	private Context mContext;
 	private LayoutInflater mInflater;
 	private ArrayList<Gobernacion> mGobernaciones;
-//	private String action;
-//	private Realm realm;
 
 	public GobernacionAdapter(Context context) {
 		this.mContext = context;
@@ -59,10 +57,6 @@ public class GobernacionAdapter extends BaseAdapter {
 	public Gobernacion getGobernacion(int position) {
 		return mGobernaciones.get(position);
 	}
-
-//	public void setAction(String accion) {
-//		this.action = accion;
-//	}
 
 	//Patron ViewHolder
 	public class ViewHolderCiudad {
@@ -109,8 +103,8 @@ public class GobernacionAdapter extends BaseAdapter {
 		Picasso.with(mContext)
 				.load(mGobernaciones.get(position).getImagen())
 				.fit()
-//				.placeholder(R.drawable.ic_carrete_eventos_table)
-//				.error(R.drawable.ic_pin_drop_white_24dp)
+				.placeholder(R.drawable.ic_assessment_white_24dp)
+				.error(R.drawable.ic_assessment_white_24dp)
 				.into(viewHolder.mImgCiudad);
 
 		viewHolder.mTxtNombreCiudad.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));

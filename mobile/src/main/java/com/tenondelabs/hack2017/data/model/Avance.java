@@ -1,8 +1,7 @@
 package com.tenondelabs.hack2017.data.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Date;
 
 import io.realm.RealmObject;
 
@@ -12,34 +11,37 @@ import io.realm.RealmObject;
 
 public class Avance extends RealmObject {
 
+    @Expose(serialize = false, deserialize = false)
     private Long id;
     @SerializedName("avanceid")
-    private Long avanceId;
+    private String avanceId;
     private String justificacion;
     private String cantidad;
     @SerializedName("fechaavance")
-    private Date fechaAvance;
+    private String fechaAvance;
     @SerializedName("fechainicio")
-    private Date fechaInicio;
+    private String fechaInicio;
     @SerializedName("fechafin")
-    private Date fechaFin;
+    private String fechaFin;
     @SerializedName("entidadid")
-    private Long entidadId;
+    private String entidadId;
     @SerializedName("entidadsigla")
     private String entidadSigla;
     @SerializedName("actividadid")
-    private Long actividadId;
+    private String actividadId;
     @SerializedName("actividadnombre")
     private String activadaNombre;
-    private int periodo;
+    private String periodo;
     @SerializedName("departamentoid")
-    private Long departamentoId;
+    private String departamentoId;
     @SerializedName("departamentonombre")
     private String departamentoNombre;
     @SerializedName("distritoid")
-    private Long distritoId;
+    private String distritoId;
     @SerializedName("distritonombre")
     private String distritoNombre;
+
+    private String imagen;
 
     public Avance() { }
 
@@ -49,14 +51,6 @@ public class Avance extends RealmObject {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getAvanceId() {
-        return avanceId;
-    }
-
-    public void setAvanceId(Long avanceId) {
-        this.avanceId = avanceId;
     }
 
     public String getJustificacion() {
@@ -75,30 +69,6 @@ public class Avance extends RealmObject {
         this.cantidad = cantidad;
     }
 
-    public Date getFechaAvance() {
-        return fechaAvance;
-    }
-
-    public void setFechaAvance(Date fechaAvance) {
-        this.fechaAvance = fechaAvance;
-    }
-
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     public String getEntidadSigla() {
         return entidadSigla;
     }
@@ -107,13 +77,6 @@ public class Avance extends RealmObject {
         this.entidadSigla = entidadSigla;
     }
 
-    public Long getActividadId() {
-        return actividadId;
-    }
-
-    public void setActividadId(Long actividadId) {
-        this.actividadId = actividadId;
-    }
 
     public String getActivadaNombre() {
         return activadaNombre;
@@ -121,22 +84,6 @@ public class Avance extends RealmObject {
 
     public void setActivadaNombre(String activadaNombre) {
         this.activadaNombre = activadaNombre;
-    }
-
-    public int getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(int periodo) {
-        this.periodo = periodo;
-    }
-
-    public Long getDepartamentoId() {
-        return departamentoId;
-    }
-
-    public void setDepartamentoId(Long departamentoId) {
-        this.departamentoId = departamentoId;
     }
 
     public String getDepartamentoNombre() {
@@ -147,14 +94,6 @@ public class Avance extends RealmObject {
         this.departamentoNombre = departamentoNombre;
     }
 
-    public Long getDistritoId() {
-        return distritoId;
-    }
-
-    public void setDistritoId(Long distritoId) {
-        this.distritoId = distritoId;
-    }
-
     public String getDistritoNombre() {
         return distritoNombre;
     }
@@ -163,11 +102,83 @@ public class Avance extends RealmObject {
         this.distritoNombre = distritoNombre;
     }
 
-    public Long getEntidadId() {
+    public String getAvanceId() {
+        return avanceId;
+    }
+
+    public void setAvanceId(String avanceId) {
+        this.avanceId = avanceId;
+    }
+
+    public String getEntidadId() {
         return entidadId;
     }
 
-    public void setEntidadId(Long entidadId) {
+    public void setEntidadId(String entidadId) {
         this.entidadId = entidadId;
+    }
+
+    public String getActividadId() {
+        return actividadId;
+    }
+
+    public void setActividadId(String actividadId) {
+        this.actividadId = actividadId;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public String getDepartamentoId() {
+        return departamentoId;
+    }
+
+    public void setDepartamentoId(String departamentoId) {
+        this.departamentoId = departamentoId;
+    }
+
+    public String getDistritoId() {
+        return distritoId;
+    }
+
+    public void setDistritoId(String distritoId) {
+        this.distritoId = distritoId;
+    }
+
+    public String getFechaAvance() {
+        return fechaAvance;
+    }
+
+    public void setFechaAvance(String fechaAvance) {
+        this.fechaAvance = fechaAvance;
+    }
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public String getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

@@ -43,9 +43,9 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	@Bind(R.id.progress_indicator_avances) ProgressBar mProgressBar;
 
 	@Inject AvanceAdapter adapter;
-	@Inject AvancePresenter ciudadPresenter;
+	@Inject AvancePresenter avancePresenter;
 
-	private static AvanceListFragment gobernacionListFragment;
+	private static AvanceListFragment avanceListFragment;
 
 	private String deptId;
 	private String entidadId;
@@ -53,17 +53,15 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	public AvanceListFragment() { }
 
 	public static AvanceListFragment newInstance() {
-		if (gobernacionListFragment == null) {
-			gobernacionListFragment = new AvanceListFragment();
+		if (avanceListFragment == null) {
+			avanceListFragment = new AvanceListFragment();
 		}
 
-		return gobernacionListFragment;
+		return avanceListFragment;
 	}
 
 	public static AvanceListFragment newInstance(String departId) {
 		AvanceListFragment avanceListFragment = new AvanceListFragment();
-
-
 		return avanceListFragment;
 	}
 
@@ -87,26 +85,26 @@ public class AvanceListFragment extends BaseFragment implements AvanceView,
 	@Override
 	public void onResume() {
 		super.onResume();
-		ciudadPresenter.onResume();
-		ciudadPresenter.getAvances();
+		avancePresenter.onResume();
+		avancePresenter.getAvances();
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		ciudadPresenter.onPause();
+		avancePresenter.onPause();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ciudadPresenter.onDestroy();
+		avancePresenter.onDestroy();
 	}
 
 	@Override
 	public void onRefresh() {
-		adapter.clearGobernaciones();
-		ciudadPresenter.getAvances();
+		adapter.clearAvances();
+		avancePresenter.getAvances();
 
 		if ( mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing() ) {
 			mSwipeRefreshLayout.setRefreshing(false);

@@ -85,7 +85,7 @@ public class EntidadAdapter extends BaseAdapter {
 		if (mEntidades.get(position) == null) {
 			return -1;
 		}
-		
+
 		return mEntidades.get(position).getId();
 	}
 
@@ -94,58 +94,29 @@ public class EntidadAdapter extends BaseAdapter {
 		ViewHolderEntidad viewHolder;
 
 		if (view == null) {
-			view = mInflater.inflate(R.layout.entidad_list_item, viewGroup, false) ;
+			view = mInflater.inflate(R.layout.entidad_list_item, viewGroup, false);
 			viewHolder = new ViewHolderEntidad(view);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolderEntidad) view.getTag();
 		}
 
+//		Picasso.with(mContext)
+//			.load(R.drawable.ic_account_balance_black_24dp)
+//			.fit()
+//			.into(viewHolder.mImgEntidad);
+
 		Picasso.with(mContext)
 				.load(mEntidades.get(position).getImagen())
 				.fit()
-//				.placeholder(R.drawable.ic_carrete_eventos_table)
-//				.error(R.drawable.ic_pin_drop_white_24dp)
+				.placeholder(R.drawable.ic_account_balance_white_24dp)
+				.error(R.drawable.ic_account_balance_white_24dp)
 				.into(viewHolder.mImgEntidad);
 
 		viewHolder.mTxtNombreEntidad.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
 		viewHolder.mTxtNombreEntidad.setText(mEntidades.get(position).getNombre());
 
-//		if (action!=null){
-//			checkFavorites(mEntidades.get(position).getId(),viewHolder);
-//		}
-
 		return view;
 	}
-
-//	private void setupRealm() {
-//		realm = Realm.getDefaultInstance();
-//	}
-
-//	private void checkFavorites(long entidadId, ViewHolderEntidad viewHolder) {
-//		Calendar auxCalendar = Calendar.getInstance();
-//		auxCalendar.set(Calendar.HOUR_OF_DAY,0);
-//		auxCalendar.set(Calendar.MINUTE,0);
-//		auxCalendar.set(Calendar.SECOND,0);
-//		auxCalendar.set(Calendar.MILLISECOND,0);
-//		setupRealm();
-//		Long count = 0l;
-//		if (action.compareTo(Util.EVENTO_BY_CIUDAD) == 0){
-//			count = realm.where(Evento.class)
-//					.equalTo("fecha",auxCalendar.getTime())
-//					.equalTo("favorito", true)
-//					.equalTo("entidadId", entidadId)
-//					.count();
-//		}else if(action.compareTo(Util.PROMO_BY_CIUDAD) == 0){
-//			count = realm.where(Promocion.class)
-//					.lessThanOrEqualTo("fechaInicio",auxCalendar.getTime())
-//					.greaterThanOrEqualTo("fechaFin",auxCalendar.getTime())
-//					.equalTo("favorito", true)
-//					.equalTo("entidadId", entidadId)
-//					.count();
-//		}
-//		realm.close();
-//		viewHolder.mImgToday.setVisibility(count>0?View.VISIBLE:View.GONE);
-//	}
 
 }
