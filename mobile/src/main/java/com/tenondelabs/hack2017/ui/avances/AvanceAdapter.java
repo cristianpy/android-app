@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.share.widget.DeviceShareButton;
+import com.facebook.share.widget.ShareButton;
+import com.squareup.picasso.Picasso;
 import com.tenondelabs.hack2017.R;
 import com.tenondelabs.hack2017.data.model.Avance;
 import com.tenondelabs.hack2017.ui.util.RobotoFontUtil;
@@ -30,6 +33,8 @@ public class AvanceAdapter extends BaseAdapter {
 	private LayoutInflater mInflater;
 	private ArrayList<Avance> mAvances;
 
+
+
 	public AvanceAdapter(Context context) {
 		this.mContext = context;
 		this.mAvances = new ArrayList<>();
@@ -44,7 +49,7 @@ public class AvanceAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void clearGobernaciones(){
+	public void clearAvances(){
 		mAvances.clear();
 		notifyDataSetChanged();
 	}
@@ -61,6 +66,8 @@ public class AvanceAdapter extends BaseAdapter {
 	public class ViewHolderCiudad {
 		@Bind(R.id.img_avance) ImageView mImgAvance;
 		@Bind(R.id.txt_justificacion) TextView mTxtJustificacion;
+		@Bind(R.id.share_facebook) ShareButton share_facebook;
+//		@Bind(R.id.share_twitter) ComposerView share_twitter;
 
 		public ViewHolderCiudad(View view){
 			ButterKnife.bind(this, view);
@@ -98,12 +105,12 @@ public class AvanceAdapter extends BaseAdapter {
 			viewHolder = (ViewHolderCiudad) view.getTag();
 		}
 
-//		Picasso.with(mContext)
-//			.load(mAvances.get(position).getImagen())
-//			.fit()
-//			.placeholder(R.drawable.ic_carrete_eventos_table)
-//			.error(R.drawable.ic_pin_drop_white_24dp)
-//			.into(viewHolder.mImgAvance);
+		Picasso.with(mContext)
+			.load(mAvances.get(position).getImagen())
+			.fit()
+			.placeholder(R.drawable.ic_carrete_eventos_table)
+			.error(R.drawable.ic_pin_drop_white_24dp)
+			.into(viewHolder.mImgAvance);
 
 		viewHolder.mTxtJustificacion.setTypeface(RobotoFontUtil.getFontRobotoRegular(mContext));
 		viewHolder.mTxtJustificacion.setText(mAvances.get(position).getJustificacion());

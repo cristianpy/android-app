@@ -39,21 +39,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.facebook.share.widget.DeviceShareButton
+                <com.facebook.share.widget.ShareButton
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:padding="15dp"
                     android:id="@+id/share_facebook"/>
 
-                <com.twitter.sdk.android.tweetcomposer.ComposerView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:layout_toRightOf="@+id/share_facebook"
-                    android:layout_toEndOf="@+id/share_facebook"
-                    android:padding="15dp"
-                    android:id="@+id/share_twitter"/>
+                <!--<com.twitter.sdk.android.tweetcomposer.ComposerView-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:layout_toRightOf="@+id/share_facebook"-->
+                    <!--android:layout_toEndOf="@+id/share_facebook"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:id="@+id/share_twitter"/>-->
 
             </RelativeLayout>
 

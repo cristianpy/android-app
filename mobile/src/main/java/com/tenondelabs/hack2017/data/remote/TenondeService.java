@@ -1,11 +1,8 @@
 package com.tenondelabs.hack2017.data.remote;
 
-import com.tenondelabs.hack2017.data.model.DataSet;
 import com.tenondelabs.hack2017.data.model.DataSetAvance;
 import com.tenondelabs.hack2017.data.model.DataSetEntidad;
 import com.tenondelabs.hack2017.data.model.DataSetGobernacion;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,11 +17,7 @@ import retrofit2.http.Query;
 public interface TenondeService {
 
     //Resource avances
-    @GET("sql?q=SELECT avance_id avanceId,avance_just justificacion,avance_cant cantidad,avance_fecha " +
-            "fechaAvance,accion_fecha_ini fechaInicio,accion_fecha_fin fechaFin,ins_id entidadId,sigla entidadSigla," +
-            "la_id actividadId,la_nombre actividadNombre,periodo,depto_id departamentoId," +
-            "depto_nombre departamentoNombre,dist_id distritoId,dist_nombre distritoNombre " +
-            "FROM public.avance ORDER BY avance_fecha DESC LIMIT 25 OFFSET 0")
+    @GET("sql?q=SELECT avance_id avanceId, avance_just justificacion, avance_cant cantidad, avance_fecha fechaAvance, accion_fecha_ini fechaInicio, accion_fecha_fin fechaFin, ins_id entidadId, sigla entidadSigla, la_id actividadId,la_nombre actividadNombre, periodo, depto_id departamentoId, depto_nombre departamentoNombre, dist_id distritoId, dist_nombre distritoNombre FROM public.avance ORDER BY avance_fecha DESC LIMIT 25 OFFSET 0")
     Call<DataSetAvance> getAvances();
 
     @GET("sql?q=SELECT avance_id avanceId,avance_just justificacion,avance_cant cantidad,avance_fecha fechaAvance," +

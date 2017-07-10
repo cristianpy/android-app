@@ -14,14 +14,14 @@
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:padding="15dp"
-            android:id="@+id/share_facebook"/>
+            android:id="@+id/btn_share_facebook"/>
 
         <com.twitter.sdk.android.tweetcomposer.ComposerView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:padding="15dp"
-            android:id="@+id/share_twitter"/>
+            android:id="@+id/btn_share_twitter"/>
 
     </LinearLayout>
 

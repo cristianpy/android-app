@@ -1,7 +1,6 @@
 package com.tenondelabs.hack2017.data.repository.impl;
 
 import com.tenondelabs.hack2017.data.model.Avance;
-import com.tenondelabs.hack2017.data.model.DataSet;
 import com.tenondelabs.hack2017.data.model.DataSetAvance;
 import com.tenondelabs.hack2017.data.remote.Callback;
 import com.tenondelabs.hack2017.data.remote.TenondeApiClient;
